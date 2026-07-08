@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_jern_upgrade": {
+      "conditions": {
+        "items": [
+          {
+            "items": "svartmagi:kisteoppgradering_jern"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "svartmagi:kisteoppgradering_gull"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_jern_upgrade"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "svartmagi:kisteoppgradering_gull"
+    ]
+  }
+}

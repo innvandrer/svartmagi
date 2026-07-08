@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_kobberovn": {
+      "conditions": {
+        "items": [
+          {
+            "items": "svartmagi:kobberovn"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "svartmagi:jernovn"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_kobberovn"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "svartmagi:jernovn"
+    ]
+  }
+}

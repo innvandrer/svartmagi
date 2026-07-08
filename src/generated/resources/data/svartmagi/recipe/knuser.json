@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "F": {
+      "item": "minecraft:flint"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "M": {
+      "item": "svartmagi:maskinkjerne"
+    }
+  },
+  "pattern": [
+    "FFF",
+    "IMI",
+    "III"
+  ],
+  "result": {
+    "count": 1,
+    "id": "svartmagi:knuser"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "svartmagi:block/pidestall_top",
+    "side": "svartmagi:block/pidestall_side"
+  }
+}

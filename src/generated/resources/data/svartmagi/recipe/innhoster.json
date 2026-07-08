@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:iron_axe"
+    },
+    "H": {
+      "item": "minecraft:iron_hoe"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "M": {
+      "item": "svartmagi:maskinkjerne"
+    },
+    "R": {
+      "item": "minecraft:redstone"
+    }
+  },
+  "pattern": [
+    "AMH",
+    "III",
+    "IRI"
+  ],
+  "result": {
+    "count": 1,
+    "id": "svartmagi:innhoster"
+  }
+}

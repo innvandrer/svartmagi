@@ -1,0 +1,12 @@
+// 1.21.1	2026-07-08T10:25:55.016030687	Tags for minecraft:item mod id svartmagi
+1294012d027a1fb04d0af7d8daa8179d8a1e4648 data/c/tags/item/dusts.json
+391cd8c8736763460f7615f91e5eca3d62f4c715 data/c/tags/item/ingots.json
+d2030a2892cb606f78f76402efd02d1b9a03a5f8 data/minecraft/tags/item/axes.json
+605c9c233d2641eeff8bdf88ea5850ea450a34c8 data/minecraft/tags/item/chest_armor.json
+ca50071458ffc81a4831a65d248bb4c3cae3e738 data/minecraft/tags/item/foot_armor.json
+3ebc3797fa62ceff25cf7e42b1b45319d57cbb11 data/minecraft/tags/item/head_armor.json
+0f836e9b4bd5af18a0ba6112f8726103fdac43ea data/minecraft/tags/item/hoes.json
+0407edcaa9672cdf2981791ee0705e464b2b5bac data/minecraft/tags/item/leg_armor.json
+dfe1e2254dc1f4ed5d2e03695848d6ec718478b6 data/minecraft/tags/item/pickaxes.json
+7d061b80cd26c0a88224e05592554ef1575144ef data/minecraft/tags/item/shovels.json
+cc8c8d8143417ab6c6d54f5528aae686800b2dc9 data/minecraft/tags/item/swords.json

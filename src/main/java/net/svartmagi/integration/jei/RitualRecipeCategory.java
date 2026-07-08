@@ -22,7 +22,7 @@ public class RitualRecipeCategory implements IRecipeCategory<RecipeHolder<Ritual
 
     @Override
     public RecipeType<RecipeHolder<RitualRecipe>> getRecipeType() {
-        return SvartmagiJeiPlugin.RITUAL;
+        return SvartmagiJeiPlugin.ritual();
     }
 
     @Override

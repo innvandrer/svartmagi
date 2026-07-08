@@ -1,0 +1,11 @@
+{
+  "type": "svartmagi:crushing",
+  "ingredient": {
+    "item": "minecraft:gravel"
+  },
+  "result": {
+    "count": 1,
+    "id": "minecraft:sand"
+  },
+  "time": 100
+}

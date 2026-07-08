@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "K": {
+      "item": "svartmagi:kobberovn"
+    }
+  },
+  "pattern": [
+    "III",
+    "IKI",
+    "III"
+  ],
+  "result": {
+    "count": 1,
+    "id": "svartmagi:jernovn"
+  }
+}

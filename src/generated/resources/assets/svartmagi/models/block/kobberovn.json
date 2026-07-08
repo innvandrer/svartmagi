@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "front": "svartmagi:block/kobberovn_front",
+    "side": "svartmagi:block/kobberovn_side",
+    "top": "svartmagi:block/kobberovn_top"
+  }
+}

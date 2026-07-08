@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "K": {
+      "item": "svartmagi:skyggekjerne"
+    },
+    "N": {
+      "item": "minecraft:netherite_ingot"
+    },
+    "S": {
+      "item": "svartmagi:skyggestov"
+    }
+  },
+  "pattern": [
+    "SNS",
+    "NKN",
+    "SNS"
+  ],
+  "result": {
+    "count": 4,
+    "id": "svartmagi:skyggestaal_barre"
+  }
+}

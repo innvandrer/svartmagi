@@ -1,0 +1,11 @@
+{
+  "type": "svartmagi:skygge",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "svartmagi:skygge",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "svartmagi:skygge"
+    }
+  }
+}

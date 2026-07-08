@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_jernovn": {
+      "conditions": {
+        "items": [
+          {
+            "items": "svartmagi:jernovn"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "svartmagi:diamantovn"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_jernovn"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "svartmagi:diamantovn"
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "G": {
+      "item": "minecraft:gold_ingot"
+    },
+    "U": {
+      "item": "svartmagi:kisteoppgradering_jern"
+    }
+  },
+  "pattern": [
+    "GGG",
+    "GUG",
+    "GGG"
+  ],
+  "result": {
+    "count": 1,
+    "id": "svartmagi:kisteoppgradering_gull"
+  }
+}

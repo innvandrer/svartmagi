@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "front": "svartmagi:block/elektrisk_ovn_front",
+    "side": "svartmagi:block/elektrisk_ovn_side",
+    "top": "svartmagi:block/elektrisk_ovn_top"
+  }
+}

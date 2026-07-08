@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "svartmagi:block/uttrekker_side",
+    "east": "svartmagi:block/uttrekker_side",
+    "north": "svartmagi:block/uttrekker_front",
+    "particle": "svartmagi:block/uttrekker_side",
+    "south": "svartmagi:block/uttrekker_side",
+    "up": "svartmagi:block/uttrekker_front",
+    "west": "svartmagi:block/uttrekker_side"
+  }
+}

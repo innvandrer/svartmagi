@@ -1,0 +1,11 @@
+{
+  "type": "svartmagi:crushing",
+  "ingredient": {
+    "item": "svartmagi:skyggemalm"
+  },
+  "result": {
+    "count": 3,
+    "id": "svartmagi:skyggestov"
+  },
+  "time": 240
+}
