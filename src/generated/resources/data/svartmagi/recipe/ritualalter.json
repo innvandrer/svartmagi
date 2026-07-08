@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:amethyst_shard"
+    },
+    "O": {
+      "item": "minecraft:obsidian"
+    },
+    "S": {
+      "item": "minecraft:polished_blackstone"
+    }
+  },
+  "pattern": [
+    "ASA",
+    "SOS",
+    "OOO"
+  ],
+  "result": {
+    "count": 1,
+    "id": "svartmagi:ritualalter"
+  }
+}

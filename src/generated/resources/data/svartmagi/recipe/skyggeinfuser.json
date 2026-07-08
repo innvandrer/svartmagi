@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:amethyst_shard"
+    },
+    "M": {
+      "item": "svartmagi:maskinkjerne"
+    },
+    "O": {
+      "item": "minecraft:obsidian"
+    }
+  },
+  "pattern": [
+    "OAO",
+    "AMA",
+    "OOO"
+  ],
+  "result": {
+    "count": 1,
+    "id": "svartmagi:skyggeinfuser"
+  }
+}

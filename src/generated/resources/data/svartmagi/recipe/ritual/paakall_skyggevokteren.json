@@ -1,0 +1,21 @@
+{
+  "type": "svartmagi:ritual",
+  "center": {
+    "item": "svartmagi:ladet_skyggeskaar"
+  },
+  "outcome": "summon_boss",
+  "pedestals": [
+    {
+      "item": "svartmagi:skyggestov"
+    },
+    {
+      "item": "svartmagi:skyggestov"
+    },
+    {
+      "item": "svartmagi:skyggestov"
+    },
+    {
+      "item": "minecraft:diamond"
+    }
+  ]
+}

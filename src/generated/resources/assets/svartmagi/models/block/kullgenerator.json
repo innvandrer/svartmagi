@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "front": "svartmagi:block/kullgenerator_front",
+    "side": "svartmagi:block/kullgenerator_side",
+    "top": "svartmagi:block/kullgenerator_top"
+  }
+}

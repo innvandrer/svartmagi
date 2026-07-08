@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "E": {
+      "item": "minecraft:ender_pearl"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "O": {
+      "item": "minecraft:obsidian"
+    }
+  },
+  "pattern": [
+    "IOI",
+    "OEO",
+    "IOI"
+  ],
+  "result": {
+    "count": 1,
+    "id": "svartmagi:stabeloppgradering"
+  }
+}

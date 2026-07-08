@@ -1,0 +1,11 @@
+{
+  "type": "svartmagi:infusing",
+  "ingredient": {
+    "item": "svartmagi:skyggeskaar"
+  },
+  "result": {
+    "count": 1,
+    "id": "svartmagi:ladet_skyggeskaar"
+  },
+  "time": 400
+}

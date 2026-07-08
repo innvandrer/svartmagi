@@ -1,0 +1,21 @@
+{
+  "type": "svartmagi:ritual",
+  "center": {
+    "item": "minecraft:ender_pearl"
+  },
+  "pedestals": [
+    {
+      "item": "minecraft:gold_ingot"
+    },
+    {
+      "item": "minecraft:gold_ingot"
+    },
+    {
+      "item": "svartmagi:ladet_skyggeskaar"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "svartmagi:gjenkallingsamulett"
+  }
+}

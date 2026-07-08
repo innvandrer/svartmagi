@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "D": {
+      "item": "minecraft:diamond"
+    },
+    "U": {
+      "item": "svartmagi:kisteoppgradering_gull"
+    }
+  },
+  "pattern": [
+    "DDD",
+    "DUD",
+    "DDD"
+  ],
+  "result": {
+    "count": 1,
+    "id": "svartmagi:kisteoppgradering_diamant"
+  }
+}

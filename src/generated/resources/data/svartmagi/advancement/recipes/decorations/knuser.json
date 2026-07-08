@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_maskinkjerne": {
+      "conditions": {
+        "items": [
+          {
+            "items": "svartmagi:maskinkjerne"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "svartmagi:knuser"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_maskinkjerne"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "svartmagi:knuser"
+    ]
+  }
+}

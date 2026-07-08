@@ -1,0 +1,27 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "svartmagi:block/uttrekker",
+      "x": 90
+    },
+    "facing=east": {
+      "model": "svartmagi:block/uttrekker",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "svartmagi:block/uttrekker"
+    },
+    "facing=south": {
+      "model": "svartmagi:block/uttrekker",
+      "y": 180
+    },
+    "facing=up": {
+      "model": "svartmagi:block/uttrekker",
+      "x": 270
+    },
+    "facing=west": {
+      "model": "svartmagi:block/uttrekker",
+      "y": 270
+    }
+  }
+}

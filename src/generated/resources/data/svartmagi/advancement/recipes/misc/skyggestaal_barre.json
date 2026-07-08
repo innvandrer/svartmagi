@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_skyggekjerne": {
+      "conditions": {
+        "items": [
+          {
+            "items": "svartmagi:skyggekjerne"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "svartmagi:skyggestaal_barre"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_skyggekjerne"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "svartmagi:skyggestaal_barre"
+    ]
+  }
+}

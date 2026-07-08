@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_gull_upgrade": {
+      "conditions": {
+        "items": [
+          {
+            "items": "svartmagi:kisteoppgradering_gull"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "svartmagi:kisteoppgradering_diamant"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_gull_upgrade"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "svartmagi:kisteoppgradering_diamant"
+    ]
+  }
+}

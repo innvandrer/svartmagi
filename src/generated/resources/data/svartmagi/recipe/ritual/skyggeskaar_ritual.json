@@ -1,0 +1,18 @@
+{
+  "type": "svartmagi:ritual",
+  "center": {
+    "item": "minecraft:amethyst_shard"
+  },
+  "pedestals": [
+    {
+      "item": "svartmagi:skyggestov"
+    },
+    {
+      "item": "svartmagi:skyggestov"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "id": "svartmagi:skyggeskaar"
+  }
+}

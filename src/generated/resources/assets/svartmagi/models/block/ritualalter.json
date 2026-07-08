@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "svartmagi:block/ritualalter_bottom",
+    "side": "svartmagi:block/ritualalter_side",
+    "top": "svartmagi:block/ritualalter_top"
+  }
+}

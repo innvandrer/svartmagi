@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "B": {
+      "item": "svartmagi:skyggestaal_barre"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "B",
+    "S",
+    "S"
+  ],
+  "result": {
+    "count": 1,
+    "id": "svartmagi:skyggestaal_spade"
+  }
+}
