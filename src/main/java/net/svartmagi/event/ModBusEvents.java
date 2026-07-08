@@ -11,6 +11,9 @@ import net.svartmagi.Svartmagi;
 import net.svartmagi.entity.SkyggevokterEntity;
 import net.svartmagi.registry.ModBlockEntities;
 import net.svartmagi.registry.ModEntities;
+import net.svartmagi.tech.FilteredItemHandler;
+import net.svartmagi.tech.ProcessingBlockEntity;
+import net.svartmagi.tech.TieredFurnaceBlockEntity;
 import net.svartmagi.veinmine.VeinMineHandler;
 import net.svartmagi.veinmine.VeinMinePayload;
 
@@ -18,19 +21,28 @@ import net.svartmagi.veinmine.VeinMinePayload;
 public final class ModBusEvents {
     @SubscribeEvent
     public static void registerCapabilities(RegisterCapabilitiesEvent event) {
-        // Item handlers for automasjon (hoppere, roer, andre mods)
+        // Item handlers for automasjon (hoppere, roer, andre mods).
+        // Filtrert slik at input-slots ikke kan toemmes av automasjon.
         event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModBlockEntities.KULLGENERATOR.get(),
-                (be, side) -> be.getInventory());
+                (be, side) -> new FilteredItemHandler(be.getInventory(), slot -> true, slot -> false));
         event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModBlockEntities.ELEKTRISK_OVN.get(),
-                (be, side) -> be.getInventory());
+                (be, side) -> new FilteredItemHandler(be.getInventory(),
+                        slot -> slot == ProcessingBlockEntity.SLOT_INPUT,
+                        slot -> slot == ProcessingBlockEntity.SLOT_OUTPUT));
         event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModBlockEntities.KNUSER.get(),
-                (be, side) -> be.getInventory());
+                (be, side) -> new FilteredItemHandler(be.getInventory(),
+                        slot -> slot == ProcessingBlockEntity.SLOT_INPUT,
+                        slot -> slot == ProcessingBlockEntity.SLOT_OUTPUT));
         event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModBlockEntities.SKYGGEINFUSER.get(),
-                (be, side) -> be.getInventory());
+                (be, side) -> new FilteredItemHandler(be.getInventory(),
+                        slot -> slot == ProcessingBlockEntity.SLOT_INPUT,
+                        slot -> slot == ProcessingBlockEntity.SLOT_OUTPUT));
         event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModBlockEntities.INNHOSTER.get(),
                 (be, side) -> be.getInventory());
         event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModBlockEntities.TIER_OVN.get(),
-                (be, side) -> be.getInventory());
+                (be, side) -> new FilteredItemHandler(be.getInventory(),
+                        slot -> slot != TieredFurnaceBlockEntity.SLOT_OUTPUT,
+                        slot -> slot == TieredFurnaceBlockEntity.SLOT_OUTPUT));
         event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModBlockEntities.OPPGRADERBAR_KISTE.get(),
                 (be, side) -> be.getInventory());
         event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModBlockEntities.UTTREKKER.get(),

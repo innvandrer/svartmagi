@@ -73,8 +73,8 @@ public class InvseeContainer implements Container {
 
     @Override
     public boolean stillValid(Player player) {
-        return !target.isRemoved() && player.canInteractWithEntity(target, 128.0)
-                || player.hasPermissions(2);
+        return !target.isRemoved()
+                && (player.canInteractWithEntity(target, 128.0) || player.hasPermissions(2));
     }
 
     @Override
