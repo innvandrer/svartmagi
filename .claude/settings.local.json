@@ -1,8 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(find ~/.gradle/caches -name \"neoforge-21.1.186*.jar\" 2>/dev/null | head -5; find ~/.gradle -path \"*neoforged*\" -name \"*.jar\" 2>/dev/null | grep -iE \"neoforge-21\" | head -10)",
-      "PowerShell(.\\\\gradlew.bat compileJava --console=plain 2>&1)"
-    ]
-  }
-}
