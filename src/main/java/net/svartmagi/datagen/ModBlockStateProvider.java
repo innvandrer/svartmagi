@@ -7,6 +7,7 @@ import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.svartmagi.Svartmagi;
+import net.svartmagi.chunkload.ChunkLoaderBlock;
 import net.svartmagi.registry.ModBlocks;
 import net.svartmagi.storage.UpgradableChestBlock;
 import net.svartmagi.tech.ItemMoverBlock;
@@ -63,6 +64,14 @@ public class ModBlockStateProvider extends BlockStateProvider {
                     .modelFile(kabelModel).rotationX(rotX).rotationY(rotY).build();
         });
         simpleBlockItem(ModBlocks.KRAFTKABEL.get(), kabelModel);
+
+        ModelFile chunklasterOff = models().cubeAll("chunklaster", modLoc("block/chunklaster"));
+        ModelFile chunklasterOn = models().cubeAll("chunklaster_on", modLoc("block/chunklaster_on"));
+        getVariantBuilder(ModBlocks.CHUNKLASTER.get()).forAllStates(state ->
+                net.neoforged.neoforge.client.model.generators.ConfiguredModel.builder()
+                        .modelFile(state.getValue(ChunkLoaderBlock.ACTIVE) ? chunklasterOn : chunklasterOff)
+                        .build());
+        simpleBlockItem(ModBlocks.CHUNKLASTER.get(), chunklasterOff);
 
         // Oppgraderbar kiste: egen tekstur per tier (blockstate-property).
         ModelFile kisteBasis = models().cubeAll("oppgraderbar_kiste", modLoc("block/oppgraderbar_kiste"));

@@ -9,6 +9,7 @@ import net.minecraft.world.level.material.MapColor;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.svartmagi.Svartmagi;
+import net.svartmagi.chunkload.ChunkLoaderBlock;
 import net.svartmagi.magic.AltarBlock;
 import net.svartmagi.magic.PedestalBlock;
 import net.svartmagi.magic.PortalBlock;
@@ -49,6 +50,8 @@ public final class ModBlocks {
     public static final DeferredBlock<CableBlock> KRAFTKABEL = BLOCKS.register("kraftkabel",
             () -> new CableBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.METAL).strength(2.0f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
+    public static final DeferredBlock<ChunkLoaderBlock> CHUNKLASTER = BLOCKS.register("chunklaster",
+            () -> new ChunkLoaderBlock(machineProps().lightLevel(s -> s.getValue(ChunkLoaderBlock.ACTIVE) ? 10 : 0)));
 
     public static final DeferredBlock<TieredFurnaceBlock> KOBBEROVN = BLOCKS.register("kobberovn",
             () -> new TieredFurnaceBlock(furnaceProps(), TieredFurnaceBlock.Tier.KOBBER));

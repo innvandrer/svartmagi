@@ -319,6 +319,29 @@ save(cable_side(), "block", "kraftkabel_side.png")
 save(cable_end(), "block", "kraftkabel_end.png")
 
 
+# --- Chunklaster -------------------------------------------------------------
+
+def chunklaster_texture(active=False):
+    img = flat_fill(dark_of(IRON))
+    diagonal_sheen(img, strength=10)
+    d = ImageDraw.Draw(img)
+    grid = shadow_of(STEEL)
+    for gx in range(2):
+        for gy in range(2):
+            x0, y0 = 3 + gx * 6, 3 + gy * 6
+            d.rectangle([x0, y0, x0 + 4, y0 + 4], fill=grid + (255,), outline=STEEL + (255,))
+    d.rectangle([6, 6, 9, 9], outline=STEEL + (255,))
+    core = PURPLE_BRIGHT if active else dark_of(PURPLE)
+    d.rectangle([7, 7, 8, 8], fill=core + (255,))
+    if active:
+        d.point((7, 7), fill=PURPLE_GLOW + (255,))
+    return img
+
+
+save(chunklaster_texture(False), "block", "chunklaster.png")
+save(chunklaster_texture(True), "block", "chunklaster_on.png")
+
+
 # --- Oppgraderbar kiste (inspirert av Sophisticated Storage) ---------------
 # SS bygger tiered chests som: treverkskropp + metallhoop-baand +
 # tier-fargede hjoernebeslag lagt paa som en overlay. Vi gjenskaper samme

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "active=false": {
+      "model": "svartmagi:block/chunklaster"
+    },
+    "active=true": {
+      "model": "svartmagi:block/chunklaster_on"
+    }
+  }
+}

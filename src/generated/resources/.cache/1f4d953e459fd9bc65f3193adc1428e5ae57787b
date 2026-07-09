@@ -1,4 +1,5 @@
-// 1.21.1	2026-07-09T11:06:43.5277636	Block States: svartmagi
+// 1.21.1	2026-07-09T18:02:25.692825345	Block States: svartmagi
+b7aef7177374ac1868cbc7a533893735f5087638 assets/svartmagi/blockstates/chunklaster.json
 08aaaadd8fc46a475faa3a2b480a36458b92aec7 assets/svartmagi/blockstates/diamantovn.json
 a6de85f844952cd4005b39ee0c3887efd30246e8 assets/svartmagi/blockstates/elektrisk_ovn.json
 3fbe2c213e0fccc6e2e514b780729c034b58e86f assets/svartmagi/blockstates/innhoster.json
@@ -15,6 +16,8 @@ fc4a1009e273cde9153ad020605218d067559900 assets/svartmagi/blockstates/skyggemalm
 93a0719fdf7ed02d683176ce8744a9a298d25525 assets/svartmagi/blockstates/skyggeportal.json
 ae5041ea08dd556797303a493a2ba80d72ae2741 assets/svartmagi/blockstates/skyggestein.json
 7fb7a46e77e3f0797d4b56bc6f88be50d0b4aba7 assets/svartmagi/blockstates/uttrekker.json
+11ef1c6626d12ba96d00b5927c9a4b7c1983584b assets/svartmagi/models/block/chunklaster.json
+a503d7f675872e48a661fbe841b1bcbf185c7d53 assets/svartmagi/models/block/chunklaster_on.json
 4597dcc10fac01b7f2e62cb77a1153eb93cc254f assets/svartmagi/models/block/diamantovn.json
 8d6aee5d3eae7445df984f5b6e637e0153500d11 assets/svartmagi/models/block/diamantovn_on.json
 45f80beb087772ebf486c6637c846afee72a7d9b assets/svartmagi/models/block/elektrisk_ovn.json
@@ -42,6 +45,7 @@ ba12801706ac2ecccc42d1ce970fc49dd279d2f2 assets/svartmagi/models/block/oppgrader
 f4d09db37b099571afd96c06f8e937be7bd66349 assets/svartmagi/models/block/skyggeportal.json
 43bf87b3928c2cbd7419696ae28440905e098146 assets/svartmagi/models/block/skyggestein.json
 27f11346fffe43991e2941a4b99ee131782c3e7d assets/svartmagi/models/block/uttrekker.json
+6288e8ba124ec810038547c98c1e2acc525900e2 assets/svartmagi/models/item/chunklaster.json
 c65f1ee352c3dd98aaf3af2bca62f0eafd964d80 assets/svartmagi/models/item/diamantovn.json
 33763c75a7d103f1efa3c1e23fe53f8aa5af6dba assets/svartmagi/models/item/elektrisk_ovn.json
 5d43827cf2d68f77aa04b3f5b2b8b0897bf939aa assets/svartmagi/models/item/innhoster.json
