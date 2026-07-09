@@ -22,6 +22,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(
                 ModBlocks.KULLGENERATOR.get(), ModBlocks.ELEKTRISK_OVN.get(), ModBlocks.KNUSER.get(),
                 ModBlocks.SKYGGEINFUSER.get(), ModBlocks.INNHOSTER.get(), ModBlocks.UTTREKKER.get(),
+                ModBlocks.KRAFTKABEL.get(),
                 ModBlocks.KOBBEROVN.get(), ModBlocks.JERNOVN.get(), ModBlocks.DIAMANTOVN.get(),
                 ModBlocks.RITUALALTER.get(), ModBlocks.PIDESTALL.get(),
                 ModBlocks.SKYGGEMALM.get(), ModBlocks.SKYGGESTEIN.get());
@@ -30,6 +31,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.NEEDS_STONE_TOOL).add(
                 ModBlocks.KULLGENERATOR.get(), ModBlocks.ELEKTRISK_OVN.get(), ModBlocks.KNUSER.get(),
                 ModBlocks.SKYGGEINFUSER.get(), ModBlocks.INNHOSTER.get(), ModBlocks.UTTREKKER.get(),
+                ModBlocks.KRAFTKABEL.get(),
                 ModBlocks.KOBBEROVN.get(), ModBlocks.JERNOVN.get(), ModBlocks.DIAMANTOVN.get(),
                 ModBlocks.PIDESTALL.get());
         tag(BlockTags.NEEDS_DIAMOND_TOOL).add(

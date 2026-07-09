@@ -71,6 +71,15 @@ public class TieredFurnaceBlockEntity extends MachineBlockEntity {
     }
 
     @Override
+    protected int maxUpgrades(net.svartmagi.item.UpgradeItem.Kind kind) {
+        return switch (kind) {
+            case SPEED -> 3;
+            case PARALLEL -> 2;
+            default -> 0;
+        };
+    }
+
+    @Override
     protected void onInventoryChanged(int slot) {
         if (slot == SLOT_INPUT) recipeDirty = true;
     }
@@ -125,19 +134,11 @@ public class TieredFurnaceBlockEntity extends MachineBlockEntity {
         }
 
         if (canSmelt && burnTime > 0) {
-            totalTime = Math.max(1, Mth.floor(cachedCookTime / speedMultiplier()));
+            totalTime = Math.max(1, Mth.floor(cachedCookTime / (speedMultiplier() * (1 + speedUpgrades))));
             progress++;
             if (progress >= totalTime) {
                 progress = 0;
-                ItemStack out = inventory.getStackInSlot(SLOT_OUTPUT);
-                if (out.isEmpty()) {
-                    inventory.setStackInSlot(SLOT_OUTPUT, result.get().copy());
-                } else {
-                    out.grow(result.get().getCount());
-                    inventory.setStackInSlot(SLOT_OUTPUT, out);
-                }
-                inventory.getStackInSlot(SLOT_INPUT).shrink(1);
-                recipeDirty = true;
+                finishSmelt(result.get());
                 setChanged();
             }
         } else if (progress != 0) {
@@ -149,6 +150,29 @@ public class TieredFurnaceBlockEntity extends MachineBlockEntity {
             setLit(burnTime > 0);
             setChanged();
         }
+    }
+
+    /** Parallellprosessering: smelt opptil N inputs per syklus (parallelloppgraderinger). */
+    private void finishSmelt(ItemStack result) {
+        int parallel = 1 + parallelUpgrades * 2;
+        ItemStack input = inventory.getStackInSlot(SLOT_INPUT);
+        int operations = Math.min(parallel, input.getCount());
+
+        ItemStack out = inventory.getStackInSlot(SLOT_OUTPUT);
+        int space = out.isEmpty() ? result.getMaxStackSize() : out.getMaxStackSize() - out.getCount();
+        operations = Math.min(operations, space / Math.max(1, result.getCount()));
+        if (operations <= 0) return;
+
+        input.shrink(operations);
+        if (out.isEmpty()) {
+            ItemStack produced = result.copy();
+            produced.setCount(result.getCount() * operations);
+            inventory.setStackInSlot(SLOT_OUTPUT, produced);
+        } else {
+            out.grow(result.getCount() * operations);
+            inventory.setStackInSlot(SLOT_OUTPUT, out);
+        }
+        recipeDirty = true;
     }
 
     private boolean canFit(ItemStack result) {

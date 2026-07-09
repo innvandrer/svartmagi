@@ -28,6 +28,7 @@ public class ModLanguageProvider extends LanguageProvider {
         both(ModBlocks.SKYGGEINFUSER.get().getDescriptionId(), "Shadow Infuser", "Skyggeinfuser");
         both(ModBlocks.INNHOSTER.get().getDescriptionId(), "Harvester", "Innhøster");
         both(ModBlocks.UTTREKKER.get().getDescriptionId(), "Item Mover", "Uttrekker");
+        both(ModBlocks.KRAFTKABEL.get().getDescriptionId(), "Power Cable", "Kraftkabel");
         both(ModBlocks.KOBBEROVN.get().getDescriptionId(), "Copper Furnace", "Kobberovn");
         both(ModBlocks.JERNOVN.get().getDescriptionId(), "Iron Furnace", "Jernovn");
         both(ModBlocks.DIAMANTOVN.get().getDescriptionId(), "Diamond Furnace", "Diamantovn");

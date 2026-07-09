@@ -1,4 +1,4 @@
-// 1.21.1	2026-07-08T10:25:55.015059035	Recipes
+// 1.21.1	2026-07-09T11:06:43.5292717	Recipes
 316b2f633fe3400494105edd76db46a4eaf2441f data/svartmagi/advancement/recipes/combat/skyggestaal_brynje.json
 671bff6afc979be4c75910ee3f845f0c6efc8138 data/svartmagi/advancement/recipes/combat/skyggestaal_bukser.json
 5d78d8ec97ad985ff9e51f8c35443808c7594de7 data/svartmagi/advancement/recipes/combat/skyggestaal_hjelm.json
@@ -10,6 +10,7 @@ aeec8e095c17d41a2e16d43c570bb477b906647c data/svartmagi/advancement/recipes/deco
 68450a4f79c3b685b8a1fab3e4d75e44ebb97146 data/svartmagi/advancement/recipes/decorations/jernovn.json
 92e4339d944dd3bca826fdf7e181df4269d4746f data/svartmagi/advancement/recipes/decorations/knuser.json
 7ec124da12b95b9cd89e667794c7ca2a92fe9b3b data/svartmagi/advancement/recipes/decorations/kobberovn.json
+27de2b0d3820df218965b1e0c527fb28a0d6651f data/svartmagi/advancement/recipes/decorations/kraftkabel.json
 369b37c5f5189126eaafcabf9d9343cc5b77b02b data/svartmagi/advancement/recipes/decorations/kullgenerator.json
 453a691a54b947ab4780f0c21b65583329c4dcb5 data/svartmagi/advancement/recipes/decorations/oppgraderbar_kiste.json
 87114e7b5c9cf6600ec74d707d14247e4155a099 data/svartmagi/advancement/recipes/decorations/pidestall.json
@@ -55,16 +56,17 @@ b57c41b0f3c5571cde4bcd53aef7d45bc8e0a765 data/svartmagi/recipe/innhoster.json
 f4ba8fd70f193eb8e875f829344ce1d76d9f92ed data/svartmagi/recipe/kisteoppgradering_jern.json
 975ed95b3e633ecfd5b08f6667fd9d739686f7ff data/svartmagi/recipe/knuser.json
 52b90efffe3226a07b83f1f600608bb881170911 data/svartmagi/recipe/kobberovn.json
+55557bff6e9d36216826f6c210d0dca61e492257 data/svartmagi/recipe/kraftkabel.json
 20fd362cbfeff7acd4346a0b4bdfd0ce9f4993b6 data/svartmagi/recipe/kullgenerator.json
 9223d3df9e68c26bb46f6c4a37fd8b42f04a8c44 data/svartmagi/recipe/maskinkjerne.json
 6bea08b65f264bc37cbd8a0b52a4df0f9908a019 data/svartmagi/recipe/oppgraderbar_kiste.json
 7298f51d4179454af3c373b2bdc6809e22505ae8 data/svartmagi/recipe/parallelloppgradering.json
 aa31dfc90bdacefb55def1b096e3dd4acf88700b data/svartmagi/recipe/pidestall.json
+76e1ee1a125304bb1f8a5d834a2dbcb14bdea6e3 data/svartmagi/recipe/ritualalter.json
 7d9f23a7d2c21d7186f1557bc194bd423803002a data/svartmagi/recipe/ritual/aapne_skyggeportal.json
 2e444a8e0661809713b7aaaf02c653c9ea6c3491 data/svartmagi/recipe/ritual/gjenkallingsamulett.json
 eb96efb11c254ab1ea2788bce4b80758066bb462 data/svartmagi/recipe/ritual/paakall_skyggevokteren.json
 e2f80ab1c7836a9a04050f650f8c4b640ac57401 data/svartmagi/recipe/ritual/skyggeskaar_ritual.json
-76e1ee1a125304bb1f8a5d834a2dbcb14bdea6e3 data/svartmagi/recipe/ritualalter.json
 c8b4a348c8004e2dcaf7aa3c18388626283004a8 data/svartmagi/recipe/skyggeinfuser.json
 aeb19780438b2d2ecbb94da9f0b5cf84b215f2d6 data/svartmagi/recipe/skyggeskaar.json
 7070ab11532b9f673ac79b8206ce80c9c6776ca2 data/svartmagi/recipe/skyggestaal_barre.json

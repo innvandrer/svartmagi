@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "svartmagi:block/kraftkabel",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "svartmagi:block/kraftkabel"
+    },
+    "axis=z": {
+      "model": "svartmagi:block/kraftkabel",
+      "x": 90
+    }
+  }
+}

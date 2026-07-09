@@ -52,6 +52,18 @@ public class ModBlockStateProvider extends BlockStateProvider {
         });
         simpleBlockItem(ModBlocks.UTTREKKER.get(), moverModel);
 
+        // Kraftkabel: aksebasert (som en stokk) - roterer med AXIS-propertyen.
+        ModelFile kabelModel = models().cubeColumn("kraftkabel",
+                modLoc("block/kraftkabel_side"), modLoc("block/kraftkabel_end"));
+        getVariantBuilder(ModBlocks.KRAFTKABEL.get()).forAllStates(state -> {
+            var axis = state.getValue(net.minecraft.world.level.block.RotatedPillarBlock.AXIS);
+            int rotX = axis == net.minecraft.core.Direction.Axis.Y ? 0 : 90;
+            int rotY = axis == net.minecraft.core.Direction.Axis.X ? 90 : 0;
+            return net.neoforged.neoforge.client.model.generators.ConfiguredModel.builder()
+                    .modelFile(kabelModel).rotationX(rotX).rotationY(rotY).build();
+        });
+        simpleBlockItem(ModBlocks.KRAFTKABEL.get(), kabelModel);
+
         // Oppgraderbar kiste: egen tekstur per tier (blockstate-property).
         ModelFile kisteBasis = models().cubeAll("oppgraderbar_kiste", modLoc("block/oppgraderbar_kiste"));
         ModelFile kisteJern = models().cubeAll("oppgraderbar_kiste_jern", modLoc("block/oppgraderbar_kiste_jern"));

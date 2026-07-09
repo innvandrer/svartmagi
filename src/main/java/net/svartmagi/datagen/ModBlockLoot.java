@@ -22,6 +22,7 @@ public class ModBlockLoot extends BlockLootSubProvider {
         dropSelf(ModBlocks.SKYGGEINFUSER.get());
         dropSelf(ModBlocks.INNHOSTER.get());
         dropSelf(ModBlocks.UTTREKKER.get());
+        dropSelf(ModBlocks.KRAFTKABEL.get());
         dropSelf(ModBlocks.KOBBEROVN.get());
         dropSelf(ModBlocks.JERNOVN.get());
         dropSelf(ModBlocks.DIAMANTOVN.get());

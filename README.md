@@ -34,13 +34,15 @@ En NeoForge-mod for Minecraft **1.21.1** (Java 21, offisielle Mojang-mappings) b
 | Skyggeinfuser | Lader items med energi – broen til magi-pilaren |
 | Innhøster | Automatisk gårds- og treplantasje-drift (se under) |
 | Uttrekker | Enkel item-transport: trekker bak, dytter foran, kan kjedes |
-| Kobber-/jern-/diamantovn | Brenselovner som er 2x/3x/6x raskere enn vanilla |
+| Kobber-/jern-/diamantovn | Brenselovner som er 2x/3x/6x raskere enn vanilla, oppgraderbare |
+| Kraftkabel | Aksebasert FE-relé – flytter strøm mellom maskiner over avstand |
 
 - **Innhøsteren** høster modne avlinger (potet/hvete/gulrot m.m.), replanter dem,
   feller trær (eik/gran/mørk eik – alt i `#minecraft:logs`) og replanter saplings
   fra bufferen sin. Drives av FE. Området er konfigurerbart.
 - **Maskinoppgraderinger:** *fartsoppgradering* (opptil 3) og *parallelloppgradering*
   (smelter/prosesserer flere items per syklus) installeres ved å høyreklikke maskinen.
+  Gjelder også tier-ovnene (kobber/jern/diamant), ikke bare knuser/ovn/infuser.
 
 ### Lagring
 - **Oppgraderbar kiste:** høyreklikk med *kisteoppgradering* jern → gull → diamant

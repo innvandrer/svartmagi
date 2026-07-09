@@ -66,6 +66,11 @@ public class ModRecipeProvider extends RecipeProvider {
                 .define('I', Items.IRON_INGOT).define('R', Items.REDSTONE).define('H', Items.HOPPER)
                 .unlockedBy("has_hopper", has(Items.HOPPER)).save(output);
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.KRAFTKABEL.get(), 6)
+                .pattern(" C ").pattern("CRC").pattern(" C ")
+                .define('C', Items.COPPER_INGOT).define('R', Items.REDSTONE)
+                .unlockedBy("has_redstone", has(Items.REDSTONE)).save(output);
+
         // Tier-ovner
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.KOBBEROVN.get())
                 .pattern("CCC").pattern("CFC").pattern("CCC")

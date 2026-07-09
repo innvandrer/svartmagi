@@ -1,6 +1,6 @@
-// 1.21.1	2026-07-08T10:25:55.015924686	Tags for minecraft:block mod id svartmagi
+// 1.21.1	2026-07-09T11:06:43.5307819	Tags for minecraft:block mod id svartmagi
 894bb0780bc05ae4bb719424307230efd56ccd72 data/minecraft/tags/block/mineable/axe.json
-31340e9785ed3c2ebb67cd691fb76036907bbade data/minecraft/tags/block/mineable/pickaxe.json
+5aae3324a6044d52d4e026600aae3972e836688c data/minecraft/tags/block/mineable/pickaxe.json
 533adeab618c9dceb4eca56127f183ef63d141ed data/minecraft/tags/block/needs_diamond_tool.json
-66c159e08d4298ad6c8baec449c3877f1b553792 data/minecraft/tags/block/needs_stone_tool.json
+0e5d98842cb8d35805bdf8917fba4520b91c7891 data/minecraft/tags/block/needs_stone_tool.json
 505626a17f7861233c14962695bd593eb0213e2c data/svartmagi/tags/block/veinmineable.json

@@ -25,6 +25,7 @@ public final class ModItems {
     public static final DeferredItem<?> SKYGGEINFUSER = ITEMS.registerSimpleBlockItem(ModBlocks.SKYGGEINFUSER);
     public static final DeferredItem<?> INNHOSTER = ITEMS.registerSimpleBlockItem(ModBlocks.INNHOSTER);
     public static final DeferredItem<?> UTTREKKER = ITEMS.registerSimpleBlockItem(ModBlocks.UTTREKKER);
+    public static final DeferredItem<?> KRAFTKABEL = ITEMS.registerSimpleBlockItem(ModBlocks.KRAFTKABEL);
     public static final DeferredItem<?> KOBBEROVN = ITEMS.registerSimpleBlockItem(ModBlocks.KOBBEROVN);
     public static final DeferredItem<?> JERNOVN = ITEMS.registerSimpleBlockItem(ModBlocks.JERNOVN);
     public static final DeferredItem<?> DIAMANTOVN = ITEMS.registerSimpleBlockItem(ModBlocks.DIAMANTOVN);

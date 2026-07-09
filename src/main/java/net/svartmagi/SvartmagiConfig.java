@@ -26,6 +26,8 @@ public final class SvartmagiConfig {
     public static final ModConfigSpec.IntValue HARVESTER_INTERVAL_TICKS;
     public static final ModConfigSpec.IntValue PIPE_TRANSFER_AMOUNT;
     public static final ModConfigSpec.IntValue PIPE_INTERVAL_TICKS;
+    public static final ModConfigSpec.IntValue CABLE_CAPACITY;
+    public static final ModConfigSpec.IntValue CABLE_TRANSFER_PER_TICK;
 
     // Veinmine
     public static final ModConfigSpec.IntValue VEINMINE_MAX_BLOCKS;
@@ -69,6 +71,10 @@ public final class SvartmagiConfig {
                 .defineInRange("pipeTransferAmount", 8, 1, 64);
         PIPE_INTERVAL_TICKS = b.comment("Ticks mellom hver roer-operasjon")
                 .defineInRange("pipeIntervalTicks", 10, 1, 200);
+        CABLE_CAPACITY = b.comment("Intern FE-buffer i kraftkabler")
+                .defineInRange("cableCapacity", 4000, 100, 1000000);
+        CABLE_TRANSFER_PER_TICK = b.comment("Maks FE en kraftkabel flytter videre per tick")
+                .defineInRange("cableTransferPerTick", 400, 10, 100000);
         b.pop();
 
         b.push("veinmine");

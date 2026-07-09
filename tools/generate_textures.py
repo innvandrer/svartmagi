@@ -285,6 +285,40 @@ d.rectangle([6, 10, 9, 12], fill=arrow + (255,))
 save(img, "block", "uttrekker_front.png")
 
 
+# --- Kraftkabel (aksebasert, som en stokk) ----------------------------------
+# Metallkappe med en glodende energi-kjerne synlig langs siden og som et
+# rundt "uttak" i endene - lett gjenkjennelig som roer/kabel i verden.
+
+CABLE_CORE = (255, 176, 64)
+
+
+def cable_side():
+    img = flat_fill(dark_of(STEEL))
+    diagonal_sheen(img, strength=14)
+    d = ImageDraw.Draw(img)
+    d.rectangle([0, 0, 2, 15], fill=STEEL + (255,))
+    d.rectangle([13, 0, 15, 15], fill=STEEL + (255,))
+    d.rectangle([6, 0, 9, 15], fill=dark_of(CABLE_CORE) + (255,))
+    d.rectangle([7, 0, 8, 15], fill=CABLE_CORE + (255,))
+    for y in (1, 5, 9, 13):
+        d.point((7, y), fill=light_of(CABLE_CORE) + (255,))
+    return img
+
+
+def cable_end():
+    img = flat_fill(dark_of(STEEL))
+    d = ImageDraw.Draw(img)
+    d.ellipse([1, 1, 14, 14], fill=STEEL + (255,), outline=shadow_of(STEEL) + (255,))
+    d.ellipse([4, 4, 11, 11], fill=(20, 18, 24, 255))
+    d.ellipse([6, 6, 9, 9], fill=CABLE_CORE + (255,))
+    d.point((6, 6), fill=light_of(CABLE_CORE) + (255,))
+    return img
+
+
+save(cable_side(), "block", "kraftkabel_side.png")
+save(cable_end(), "block", "kraftkabel_end.png")
+
+
 # --- Oppgraderbar kiste (inspirert av Sophisticated Storage) ---------------
 # SS bygger tiered chests som: treverkskropp + metallhoop-baand +
 # tier-fargede hjoernebeslag lagt paa som en overlay. Vi gjenskaper samme
@@ -803,29 +837,60 @@ save(from_ascii(BOOTS, ARMOR_PAL), "item", "skyggestaal_stovler.png")
 
 
 # --- Rustning-layers (64x32) --------------------------------------------------
+# Vanilla humanoid-armor-UV: hjelm (0,0)-(32,16), kropp (16,16)-(40,32),
+# armer (40,16)-(56,32), bein (0,16)-(16,32). Flat panel + bevel + soem
+# i stedet for stoy, saa rustningen faar synlig form paa spilleren -
+# ikke bare en ensfarget blob.
 
-def armor_fill(px, x0, y0, x1, y1, base, trim_rows=()):
-    for y in range(y0, y1):
-        for x in range(x0, x1):
-            v = random.randint(-8, 8)
-            c = mix(base, light_of(base), max(0.0, 1 - (y - y0) / max(1, y1 - y0)) * 0.25)
-            px[x, y] = tuple(clamp(ch + v) for ch in c) + (255,)
-    for ty in trim_rows:
-        for x in range(x0, x1):
-            px[x, ty] = dark_of(PURPLE) + (255,)
+def armor_panel(d, x0, y0, x1, y1, base):
+    d.rectangle([x0, y0, x1 - 1, y1 - 1], fill=base + (255,))
+    lt = light_of(base) + (255,)
+    dk = shadow_of(base) + (255,)
+    d.line([(x0, y0), (x1 - 1, y0)], fill=lt)
+    d.line([(x0, y0), (x0, y1 - 1)], fill=lt)
+    d.line([(x0, y1 - 1), (x1 - 1, y1 - 1)], fill=dk)
+    d.line([(x1 - 1, y0), (x1 - 1, y1 - 1)], fill=dk)
+
+
+def armor_seam(d, x0, x1, y, base):
+    d.line([(x0, y), (x1 - 1, y)], fill=dark_of(base) + (255,))
 
 
 for layer in (1, 2):
     img = Image.new("RGBA", (64, 32), (0, 0, 0, 0))
-    px = img.load()
+    d = ImageDraw.Draw(img)
     if layer == 1:
-        armor_fill(px, 0, 0, 32, 16, SKYGGESTAAL, trim_rows=(15,))    # hjelm
-        armor_fill(px, 16, 16, 40, 32, SKYGGESTAAL, trim_rows=(31,))  # bryst
-        armor_fill(px, 40, 16, 56, 32, SKYGGESTAAL)                   # armer
-        armor_fill(px, 0, 16, 16, 32, SKYGGESTAAL, trim_rows=(31,))   # stovler
+        # Hjelm - visir med glodende oyne paa front-flaten
+        armor_panel(d, 0, 0, 32, 16, SKYGGESTAAL)
+        armor_seam(d, 0, 32, 8, SKYGGESTAAL)
+        d.rectangle([9, 11, 14, 12], fill=(18, 16, 24, 255))
+        d.point((10, 11), fill=PURPLE_GLOW + (255,))
+        d.point((13, 11), fill=PURPLE_GLOW + (255,))
+
+        # Brystplate - loddrett rune paa brystet
+        armor_panel(d, 16, 16, 40, 32, SKYGGESTAAL)
+        armor_seam(d, 16, 40, 24, SKYGGESTAAL)
+        d.line([(23, 21), (23, 27)], fill=PURPLE + (255,))
+        d.line([(21, 24), (25, 24)], fill=PURPLE + (255,))
+        d.point((23, 21), fill=PURPLE_GLOW + (255,))
+
+        # Armer
+        armor_panel(d, 40, 16, 56, 32, SKYGGESTAAL)
+        armor_seam(d, 40, 56, 24, SKYGGESTAAL)
+
+        # Oevre boot-del (dekkes av layer 1 paa foettene)
+        armor_panel(d, 0, 16, 16, 32, SKYGGESTAAL)
+        armor_seam(d, 0, 16, 24, SKYGGESTAAL)
     else:
-        armor_fill(px, 0, 16, 16, 32, dark_of(SKYGGESTAAL), trim_rows=(31,))   # bein
-        armor_fill(px, 16, 16, 40, 32, dark_of(SKYGGESTAAL))                   # belte
+        # Bein
+        armor_panel(d, 0, 16, 16, 32, dark_of(SKYGGESTAAL))
+        armor_seam(d, 0, 16, 24, dark_of(SKYGGESTAAL))
+
+        # Laar/belte med liten spenne
+        armor_panel(d, 16, 16, 40, 32, dark_of(SKYGGESTAAL))
+        armor_seam(d, 16, 40, 22, dark_of(SKYGGESTAAL))
+        d.rectangle([26, 20, 29, 22], fill=PURPLE_BRIGHT + (255,))
+        d.point((26, 20), fill=PURPLE_GLOW + (255,))
     save(img, "models", "armor", f"skyggestaal_layer_{layer}.png")
 
 

@@ -8,6 +8,7 @@ import net.svartmagi.Svartmagi;
 import net.svartmagi.magic.AltarBlockEntity;
 import net.svartmagi.magic.PedestalBlockEntity;
 import net.svartmagi.storage.UpgradableChestBlockEntity;
+import net.svartmagi.tech.CableBlockEntity;
 import net.svartmagi.tech.CrusherBlockEntity;
 import net.svartmagi.tech.ElectricFurnaceBlockEntity;
 import net.svartmagi.tech.GeneratorBlockEntity;
@@ -38,6 +39,9 @@ public final class ModBlockEntities {
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ItemMoverBlockEntity>> UTTREKKER =
             BLOCK_ENTITIES.register("uttrekker", () -> BlockEntityType.Builder
                     .of(ItemMoverBlockEntity::new, ModBlocks.UTTREKKER.get()).build(null));
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<CableBlockEntity>> KRAFTKABEL =
+            BLOCK_ENTITIES.register("kraftkabel", () -> BlockEntityType.Builder
+                    .of(CableBlockEntity::new, ModBlocks.KRAFTKABEL.get()).build(null));
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<TieredFurnaceBlockEntity>> TIER_OVN =
             BLOCK_ENTITIES.register("tier_ovn", () -> BlockEntityType.Builder
                     .of(TieredFurnaceBlockEntity::new,

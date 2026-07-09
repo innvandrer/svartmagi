@@ -1,10 +1,11 @@
-// 1.21.1	2026-07-08T10:25:55.014864049	Loot Tables
+// 1.21.1	2026-07-09T11:06:43.5292717	Loot Tables
 d408fd8797498c298cbf1c7582ccecbbc793ac98 data/svartmagi/loot_table/blocks/diamantovn.json
 ca34c7a24dead121c3ba5513451e43094f6efe3a data/svartmagi/loot_table/blocks/elektrisk_ovn.json
 7fc6487dfa9c118a976929744652834fb833451a data/svartmagi/loot_table/blocks/innhoster.json
 0af4ff9a3cb6defb18b1752b4463682ea4ec8d67 data/svartmagi/loot_table/blocks/jernovn.json
 99d45d2b36a248d0bacaf9159d91c320ef7f64bc data/svartmagi/loot_table/blocks/knuser.json
 a4199ad55ea0c8ea45dc96f8ae9edae002b4cb9b data/svartmagi/loot_table/blocks/kobberovn.json
+26ee150ae22a866236c59c38093a353a0db9d1d2 data/svartmagi/loot_table/blocks/kraftkabel.json
 4948732497d58c547f8927af1c722ad7bdc0db31 data/svartmagi/loot_table/blocks/kullgenerator.json
 84b5c4db41a1eb0bd82913005626952d2b8c81dc data/svartmagi/loot_table/blocks/oppgraderbar_kiste.json
 cbe74af4fed77eb2dc19740263c35d882e4a5fff data/svartmagi/loot_table/blocks/pidestall.json

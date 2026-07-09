@@ -1,10 +1,11 @@
-// 1.21.1	2026-07-09T10:53:25.0959069	Block States: svartmagi
+// 1.21.1	2026-07-09T11:06:43.5277636	Block States: svartmagi
 08aaaadd8fc46a475faa3a2b480a36458b92aec7 assets/svartmagi/blockstates/diamantovn.json
 a6de85f844952cd4005b39ee0c3887efd30246e8 assets/svartmagi/blockstates/elektrisk_ovn.json
 3fbe2c213e0fccc6e2e514b780729c034b58e86f assets/svartmagi/blockstates/innhoster.json
 e44ec8b40efdcdbacf67683aa27aaeb0473a246e assets/svartmagi/blockstates/jernovn.json
 abf0e01ae104921cc5793e0e72aea8c2895d5069 assets/svartmagi/blockstates/knuser.json
 3eb62d1b677839a933ef4caf6a4ef354d78d1cf6 assets/svartmagi/blockstates/kobberovn.json
+95bb6e59839559f74d3eb738b277dec22fd20863 assets/svartmagi/blockstates/kraftkabel.json
 faae8968c7e1fe4b42f01383c83f1b9233553c60 assets/svartmagi/blockstates/kullgenerator.json
 8a90f1bf7451d9e34a0eadc715392ae6fdca1cf6 assets/svartmagi/blockstates/oppgraderbar_kiste.json
 4c495faffc57180da55ec653f0591bc062076370 assets/svartmagi/blockstates/pidestall.json
@@ -26,6 +27,7 @@ af78f6acd3730d788a7d7e6ada765275327566eb assets/svartmagi/models/block/jernovn_o
 8c2bdcfb7cd5070c5a46a4de0c23ecb78dca9023 assets/svartmagi/models/block/knuser_on.json
 9ed5391378ac0939ac25db24e66175320e632c15 assets/svartmagi/models/block/kobberovn.json
 df788e7e07a36f1441e17d3986cf412567148db1 assets/svartmagi/models/block/kobberovn_on.json
+6be3f4d6eb74efe2513934f10ab9b1aa2dafe8b3 assets/svartmagi/models/block/kraftkabel.json
 d5b7c7ba7baf0391d95dba341f6219eceb63eb1c assets/svartmagi/models/block/kullgenerator.json
 5a820b1fab1fa9b6da22cf1bbec6c92973d42850 assets/svartmagi/models/block/kullgenerator_on.json
 7a1e67602e33b0b33e685739233dd41e8a8c5b2d assets/svartmagi/models/block/oppgraderbar_kiste.json
@@ -46,6 +48,7 @@ c65f1ee352c3dd98aaf3af2bca62f0eafd964d80 assets/svartmagi/models/item/diamantovn
 522430d828b96e02baa1f396da53a1163718f6f2 assets/svartmagi/models/item/jernovn.json
 07d6d13e3cfb4743ff41757943f94b84f17fc933 assets/svartmagi/models/item/knuser.json
 07228f34e71f5866c6f03e44a7694a24cf09eb63 assets/svartmagi/models/item/kobberovn.json
+cf872352cac1d61e01d2618c3a54f421d154115b assets/svartmagi/models/item/kraftkabel.json
 2c2adb7bb6e079767689031ba7ace4228b533249 assets/svartmagi/models/item/kullgenerator.json
 5e2fd4d54addff4f66f92bc009b20b9518481201 assets/svartmagi/models/item/oppgraderbar_kiste.json
 5a9a4dc804124f710c19ed00dc9eeba273d6c606 assets/svartmagi/models/item/pidestall.json

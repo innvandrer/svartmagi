@@ -13,6 +13,7 @@ import net.svartmagi.magic.AltarBlock;
 import net.svartmagi.magic.PedestalBlock;
 import net.svartmagi.magic.PortalBlock;
 import net.svartmagi.storage.UpgradableChestBlock;
+import net.svartmagi.tech.CableBlock;
 import net.svartmagi.tech.HarvesterBlock;
 import net.svartmagi.tech.ItemMoverBlock;
 import net.svartmagi.tech.MachineBlock;
@@ -45,6 +46,9 @@ public final class ModBlocks {
             () -> new HarvesterBlock(machineProps()));
     public static final DeferredBlock<ItemMoverBlock> UTTREKKER = BLOCKS.register("uttrekker",
             () -> new ItemMoverBlock(machineProps()));
+    public static final DeferredBlock<CableBlock> KRAFTKABEL = BLOCKS.register("kraftkabel",
+            () -> new CableBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.METAL).strength(2.0f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
 
     public static final DeferredBlock<TieredFurnaceBlock> KOBBEROVN = BLOCKS.register("kobberovn",
             () -> new TieredFurnaceBlock(furnaceProps(), TieredFurnaceBlock.Tier.KOBBER));

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "svartmagi:block/kraftkabel_end",
+    "side": "svartmagi:block/kraftkabel_side"
+  }
+}

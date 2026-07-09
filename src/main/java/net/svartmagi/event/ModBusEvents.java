@@ -60,6 +60,8 @@ public final class ModBusEvents {
                 (be, side) -> be.getEnergy().receiveOnlyView());
         event.registerBlockEntity(Capabilities.EnergyStorage.BLOCK, ModBlockEntities.INNHOSTER.get(),
                 (be, side) -> be.getEnergy().receiveOnlyView());
+        event.registerBlockEntity(Capabilities.EnergyStorage.BLOCK, ModBlockEntities.KRAFTKABEL.get(),
+                (be, side) -> be.getEnergy());
     }
 
     @SubscribeEvent
