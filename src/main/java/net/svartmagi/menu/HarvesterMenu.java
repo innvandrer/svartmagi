@@ -15,7 +15,7 @@ public class HarvesterMenu extends BaseMachineMenu {
     private final ContainerData data;
 
     public HarvesterMenu(int containerId, Inventory playerInventory, FriendlyByteBuf buf) {
-        this(containerId, playerInventory, clientBlockEntity(playerInventory, buf.readBlockPos()), new SimpleContainerData(4));
+        this(containerId, playerInventory, clientBlockEntity(playerInventory, buf.readBlockPos()), new SimpleContainerData(5));
     }
 
     public HarvesterMenu(int containerId, Inventory playerInventory, HarvesterBlockEntity blockEntity, ContainerData data) {
@@ -42,5 +42,9 @@ public class HarvesterMenu extends BaseMachineMenu {
 
     public int getCapacity() {
         return (data.get(3) << 16) | (data.get(2) & 0xFFFF);
+    }
+
+    public int getSpeedUpgrades() {
+        return data.get(4);
     }
 }

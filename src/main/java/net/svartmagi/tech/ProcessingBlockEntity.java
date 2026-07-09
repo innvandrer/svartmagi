@@ -47,6 +47,8 @@ public abstract class ProcessingBlockEntity extends MachineBlockEntity {
                 case 3 -> (energy.getEnergyStored() >> 16) & 0xFFFF;
                 case 4 -> energy.getCapacity() & 0xFFFF;
                 case 5 -> (energy.getCapacity() >> 16) & 0xFFFF;
+                case 6 -> speedUpgrades;
+                case 7 -> parallelUpgrades;
                 default -> 0;
             };
         }
@@ -61,7 +63,7 @@ public abstract class ProcessingBlockEntity extends MachineBlockEntity {
 
         @Override
         public int getCount() {
-            return 6;
+            return 8;
         }
     };
 

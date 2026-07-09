@@ -182,7 +182,10 @@ public final class ModCommands {
             return 0;
         }
 
-        ServerLevel level = (ServerLevel) player.level();
+        // Alltid i oververdenen, uansett hvilken dimensjon spilleren staar i.
+        // Skyggeverden er End-lignende med svevende oyer i tomt rom - et
+        // radius-soek der ville nesten alltid gaa tomt for forsoek.
+        ServerLevel level = player.server.overworld();
         RandomSource random = level.random;
         int radius = SvartmagiConfig.RTP_RADIUS.get();
         BlockPos spawnPos = level.getSharedSpawnPos();

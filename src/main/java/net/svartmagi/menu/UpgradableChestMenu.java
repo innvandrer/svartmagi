@@ -46,4 +46,10 @@ public class UpgradableChestMenu extends BaseMachineMenu {
     public boolean isFor(IItemHandler handler) {
         return this.handler == handler;
     }
+
+    /** Kiste-BE for oppgraderingsvisning i GUI (null i fallback paa klienten). */
+    @Nullable
+    public UpgradableChestBlockEntity chest() {
+        return blockEntity instanceof UpgradableChestBlockEntity chest ? chest : null;
+    }
 }

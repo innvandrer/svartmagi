@@ -43,5 +43,18 @@ public class TieredFurnaceScreen extends AbstractContainerScreen<TieredFurnaceMe
     public void render(GuiGraphics graphics, int mouseX, int mouseY, float partialTick) {
         super.render(graphics, mouseX, mouseY, partialTick);
         renderTooltip(graphics, mouseX, mouseY);
+
+        java.util.List<UpgradeDisplay.Entry> upgrades = new java.util.ArrayList<>();
+        if (menu.getSpeedUpgrades() > 0) {
+            upgrades.add(new UpgradeDisplay.Entry(
+                    new net.minecraft.world.item.ItemStack(net.svartmagi.registry.ModItems.FARTSOPPGRADERING.get()),
+                    menu.getSpeedUpgrades()));
+        }
+        if (menu.getParallelUpgrades() > 0) {
+            upgrades.add(new UpgradeDisplay.Entry(
+                    new net.minecraft.world.item.ItemStack(net.svartmagi.registry.ModItems.PARALLELLOPPGRADERING.get()),
+                    menu.getParallelUpgrades()));
+        }
+        UpgradeDisplay.render(graphics, font, leftPos + imageWidth + 2, topPos + 6, upgrades, mouseX, mouseY);
     }
 }

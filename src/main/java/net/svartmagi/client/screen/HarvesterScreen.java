@@ -38,5 +38,13 @@ public class HarvesterScreen extends AbstractContainerScreen<HarvesterMenu> {
             graphics.renderTooltip(font, Component.literal(menu.getEnergy() + " / " + menu.getCapacity() + " FE"),
                     mouseX, mouseY);
         }
+
+        java.util.List<UpgradeDisplay.Entry> upgrades = new java.util.ArrayList<>();
+        if (menu.getSpeedUpgrades() > 0) {
+            upgrades.add(new UpgradeDisplay.Entry(
+                    new net.minecraft.world.item.ItemStack(net.svartmagi.registry.ModItems.FARTSOPPGRADERING.get()),
+                    menu.getSpeedUpgrades()));
+        }
+        UpgradeDisplay.render(graphics, font, leftPos + imageWidth + 2, topPos + 6, upgrades, mouseX, mouseY);
     }
 }

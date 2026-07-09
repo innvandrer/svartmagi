@@ -58,6 +58,7 @@ public class HarvesterBlockEntity extends MachineBlockEntity {
                 case 1 -> (energy.getEnergyStored() >> 16) & 0xFFFF;
                 case 2 -> energy.getCapacity() & 0xFFFF;
                 case 3 -> (energy.getCapacity() >> 16) & 0xFFFF;
+                case 4 -> speedUpgrades;
                 default -> 0;
             };
         }
@@ -67,7 +68,7 @@ public class HarvesterBlockEntity extends MachineBlockEntity {
 
         @Override
         public int getCount() {
-            return 4;
+            return 5;
         }
     };
 

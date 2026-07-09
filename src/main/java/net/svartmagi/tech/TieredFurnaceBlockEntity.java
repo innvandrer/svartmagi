@@ -41,6 +41,8 @@ public class TieredFurnaceBlockEntity extends MachineBlockEntity {
                 case 1 -> burnDuration;
                 case 2 -> progress;
                 case 3 -> totalTime;
+                case 4 -> speedUpgrades;
+                case 5 -> parallelUpgrades;
                 default -> 0;
             };
         }
@@ -57,7 +59,7 @@ public class TieredFurnaceBlockEntity extends MachineBlockEntity {
 
         @Override
         public int getCount() {
-            return 4;
+            return 6;
         }
     };
 

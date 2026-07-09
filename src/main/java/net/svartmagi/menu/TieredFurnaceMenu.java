@@ -15,7 +15,7 @@ public class TieredFurnaceMenu extends BaseMachineMenu {
     private final ContainerData data;
 
     public TieredFurnaceMenu(int containerId, Inventory playerInventory, FriendlyByteBuf buf) {
-        this(containerId, playerInventory, clientBlockEntity(playerInventory, buf.readBlockPos()), new SimpleContainerData(4));
+        this(containerId, playerInventory, clientBlockEntity(playerInventory, buf.readBlockPos()), new SimpleContainerData(6));
     }
 
     public TieredFurnaceMenu(int containerId, Inventory playerInventory, TieredFurnaceBlockEntity blockEntity, ContainerData data) {
@@ -53,5 +53,13 @@ public class TieredFurnaceMenu extends BaseMachineMenu {
 
     public int getTotalTime() {
         return data.get(3);
+    }
+
+    public int getSpeedUpgrades() {
+        return data.get(4);
+    }
+
+    public int getParallelUpgrades() {
+        return data.get(5);
     }
 }
