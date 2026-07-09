@@ -73,6 +73,10 @@ public class UpgradableChestBlockEntity extends BlockEntity implements MenuProvi
         return 64 << stackUpgrades;
     }
 
+    public int getStackUpgrades() {
+        return stackUpgrades;
+    }
+
     public boolean tryInstallUpgrade(UpgradeItem.Kind kind, Player player) {
         Tier target = switch (kind) {
             case CHEST_JERN -> Tier.JERN;

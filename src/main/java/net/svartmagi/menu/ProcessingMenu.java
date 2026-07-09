@@ -15,7 +15,7 @@ public class ProcessingMenu extends BaseMachineMenu {
     private final ContainerData data;
 
     public ProcessingMenu(int containerId, Inventory playerInventory, FriendlyByteBuf buf) {
-        this(containerId, playerInventory, clientBlockEntity(playerInventory, buf.readBlockPos()), new SimpleContainerData(6));
+        this(containerId, playerInventory, clientBlockEntity(playerInventory, buf.readBlockPos()), new SimpleContainerData(8));
     }
 
     public ProcessingMenu(int containerId, Inventory playerInventory, ProcessingBlockEntity blockEntity, ContainerData data) {
@@ -52,5 +52,13 @@ public class ProcessingMenu extends BaseMachineMenu {
 
     public int getCapacity() {
         return (data.get(5) << 16) | (data.get(4) & 0xFFFF);
+    }
+
+    public int getSpeedUpgrades() {
+        return data.get(6);
+    }
+
+    public int getParallelUpgrades() {
+        return data.get(7);
     }
 }

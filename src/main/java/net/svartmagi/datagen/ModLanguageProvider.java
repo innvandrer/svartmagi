@@ -83,6 +83,9 @@ public class ModLanguageProvider extends LanguageProvider {
         both("message.svartmagi.recalled", "You are pulled home through the shadows", "Du trekkes hjem gjennom skyggene");
 
         both("tooltip.svartmagi.upgrade_hint", "Right-click a machine or chest to install", "Høyreklikk en maskin eller kiste for å installere");
+
+        both("gui.svartmagi.upgrades", "Upgrades", "Oppgraderinger");
+        both("gui.svartmagi.no_upgrades", "No upgrades installed", "Ingen oppgraderinger installert");
         both("tooltip.svartmagi.gjenkallingsamulett", "Teleports you home (or to spawn)", "Teleporterer deg hjem (eller til spawn)");
 
         both("command.svartmagi.disabled", "Svartmagi commands are disabled on this server", "Svartmagi-kommandoer er skrudd av på denne serveren");

@@ -33,5 +33,25 @@ public class UpgradableChestScreen extends AbstractContainerScreen<UpgradableChe
     public void render(GuiGraphics graphics, int mouseX, int mouseY, float partialTick) {
         super.render(graphics, mouseX, mouseY, partialTick);
         renderTooltip(graphics, mouseX, mouseY);
+
+        var chest = menu.chest();
+        java.util.List<UpgradeDisplay.Entry> upgrades = new java.util.ArrayList<>();
+        if (chest != null) {
+            var tierItem = switch (chest.getTier()) {
+                case BASIS -> null;
+                case JERN -> net.svartmagi.registry.ModItems.KISTEOPPGRADERING_JERN.get();
+                case GULL -> net.svartmagi.registry.ModItems.KISTEOPPGRADERING_GULL.get();
+                case DIAMANT -> net.svartmagi.registry.ModItems.KISTEOPPGRADERING_DIAMANT.get();
+            };
+            if (tierItem != null) {
+                upgrades.add(new UpgradeDisplay.Entry(new net.minecraft.world.item.ItemStack(tierItem), 1));
+            }
+            if (chest.getStackUpgrades() > 0) {
+                upgrades.add(new UpgradeDisplay.Entry(
+                        new net.minecraft.world.item.ItemStack(net.svartmagi.registry.ModItems.STABELOPPGRADERING.get()),
+                        chest.getStackUpgrades()));
+            }
+        }
+        UpgradeDisplay.render(graphics, font, leftPos + imageWidth + 2, topPos + 6, upgrades, mouseX, mouseY);
     }
 }
