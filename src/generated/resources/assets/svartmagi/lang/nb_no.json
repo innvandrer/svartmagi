@@ -41,6 +41,8 @@
   "command.svartmagi.tpa_sent": "Teleportforespørsel sendt til %s",
   "command.svartmagi.tpahere_received": "%s vil at du skal teleportere til dem. /tpaccept eller /tpdeny",
   "entity.svartmagi.skyggevokter": "Skyggevokteren",
+  "gui.svartmagi.no_upgrades": "Ingen oppgraderinger installert",
+  "gui.svartmagi.upgrades": "Oppgraderinger",
   "item.svartmagi.fartsoppgradering": "Fartsoppgradering",
   "item.svartmagi.gjenkallingsamulett": "Gjenkallingsamulett",
   "item.svartmagi.kisteoppgradering_diamant": "Kisteoppgradering (diamant)",

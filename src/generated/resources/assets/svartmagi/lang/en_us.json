@@ -41,6 +41,8 @@
   "command.svartmagi.tpa_sent": "Teleport request sent to %s",
   "command.svartmagi.tpahere_received": "%s wants you to teleport to them. /tpaccept or /tpdeny",
   "entity.svartmagi.skyggevokter": "Shadow Warden",
+  "gui.svartmagi.no_upgrades": "No upgrades installed",
+  "gui.svartmagi.upgrades": "Upgrades",
   "item.svartmagi.fartsoppgradering": "Speed Upgrade",
   "item.svartmagi.gjenkallingsamulett": "Recall Amulet",
   "item.svartmagi.kisteoppgradering_diamant": "Diamond Chest Upgrade",
