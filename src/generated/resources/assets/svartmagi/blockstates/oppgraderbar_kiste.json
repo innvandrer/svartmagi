@@ -1,7 +1,16 @@
 {
   "variants": {
-    "": {
+    "tier=basis": {
       "model": "svartmagi:block/oppgraderbar_kiste"
+    },
+    "tier=diamant": {
+      "model": "svartmagi:block/oppgraderbar_kiste_diamant"
+    },
+    "tier=gull": {
+      "model": "svartmagi:block/oppgraderbar_kiste_gull"
+    },
+    "tier=jern": {
+      "model": "svartmagi:block/oppgraderbar_kiste_jern"
     }
   }
 }

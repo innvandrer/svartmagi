@@ -1,4 +1,4 @@
-// 1.21.1	2026-07-08T10:25:55.014294639	Block States: svartmagi
+// 1.21.1	2026-07-09T10:53:25.0959069	Block States: svartmagi
 08aaaadd8fc46a475faa3a2b480a36458b92aec7 assets/svartmagi/blockstates/diamantovn.json
 a6de85f844952cd4005b39ee0c3887efd30246e8 assets/svartmagi/blockstates/elektrisk_ovn.json
 3fbe2c213e0fccc6e2e514b780729c034b58e86f assets/svartmagi/blockstates/innhoster.json
@@ -6,7 +6,7 @@ e44ec8b40efdcdbacf67683aa27aaeb0473a246e assets/svartmagi/blockstates/jernovn.js
 abf0e01ae104921cc5793e0e72aea8c2895d5069 assets/svartmagi/blockstates/knuser.json
 3eb62d1b677839a933ef4caf6a4ef354d78d1cf6 assets/svartmagi/blockstates/kobberovn.json
 faae8968c7e1fe4b42f01383c83f1b9233553c60 assets/svartmagi/blockstates/kullgenerator.json
-03ed07f9423bf094654c932558166b1172af4185 assets/svartmagi/blockstates/oppgraderbar_kiste.json
+8a90f1bf7451d9e34a0eadc715392ae6fdca1cf6 assets/svartmagi/blockstates/oppgraderbar_kiste.json
 4c495faffc57180da55ec653f0591bc062076370 assets/svartmagi/blockstates/pidestall.json
 a59bbb2e32679e5494b0a49bfb18c6d1833f6689 assets/svartmagi/blockstates/ritualalter.json
 149332743659dd04a3a7941e66521ef8971c5eae assets/svartmagi/blockstates/skyggeinfuser.json
@@ -29,6 +29,9 @@ df788e7e07a36f1441e17d3986cf412567148db1 assets/svartmagi/models/block/kobberovn
 d5b7c7ba7baf0391d95dba341f6219eceb63eb1c assets/svartmagi/models/block/kullgenerator.json
 5a820b1fab1fa9b6da22cf1bbec6c92973d42850 assets/svartmagi/models/block/kullgenerator_on.json
 7a1e67602e33b0b33e685739233dd41e8a8c5b2d assets/svartmagi/models/block/oppgraderbar_kiste.json
+c53763c1eb348564e99d5861f00ae8597cbe7990 assets/svartmagi/models/block/oppgraderbar_kiste_diamant.json
+d74e74e707b0e9fe367dcc33299004cbf624e023 assets/svartmagi/models/block/oppgraderbar_kiste_gull.json
+ba12801706ac2ecccc42d1ce970fc49dd279d2f2 assets/svartmagi/models/block/oppgraderbar_kiste_jern.json
 0958128f89e3346401f52a77e266cdd6adba205b assets/svartmagi/models/block/pidestall.json
 04c5f030599044fb5a2ea8ef2625ff453edf37ee assets/svartmagi/models/block/ritualalter.json
 7c8465d492eca8d2cdb3c02cbc29f18f2ae24d2d assets/svartmagi/models/block/skyggeinfuser.json

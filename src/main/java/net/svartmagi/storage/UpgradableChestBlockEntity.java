@@ -21,7 +21,7 @@ import net.svartmagi.menu.UpgradableChestMenu;
 import net.svartmagi.registry.ModBlockEntities;
 
 public class UpgradableChestBlockEntity extends BlockEntity implements MenuProvider {
-    public enum Tier {
+    public enum Tier implements net.minecraft.util.StringRepresentable {
         BASIS(3),
         JERN(4),
         GULL(5),
@@ -31,6 +31,11 @@ public class UpgradableChestBlockEntity extends BlockEntity implements MenuProvi
 
         Tier(int rows) {
             this.rows = rows;
+        }
+
+        @Override
+        public String getSerializedName() {
+            return name().toLowerCase(java.util.Locale.ROOT);
         }
     }
 
@@ -116,7 +121,10 @@ public class UpgradableChestBlockEntity extends BlockEntity implements MenuProvi
         tier = target;
         setChanged();
         invalidateCapabilities();
-        level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), 3);
+        // Tieren er en blockstate-property (styrer teksturen), saa
+        // level.setBlock synker den til klienten - egen blokk-klasse
+        // beholdes saa BlockEntityen ikke fjernes/gjenskapes.
+        level.setBlock(worldPosition, getBlockState().setValue(UpgradableChestBlock.TIER, tier), 3);
         player.displayClientMessage(Component.translatable("message.svartmagi.upgrade_installed"), true);
         return true;
     }
@@ -152,6 +160,21 @@ public class UpgradableChestBlockEntity extends BlockEntity implements MenuProvi
         stackUpgrades = tag.getInt("StackUpgrades");
         inventory = createHandler(tier.rows * 9);
         if (tag.contains("Inventory")) inventory.deserializeNBT(registries, tag.getCompound("Inventory"));
+    }
+
+    /**
+     * Retter opp blockstate-tieren mot lagret NBT-tier ved chunk-last.
+     * Trengs for kister oppgradert foer TIER-blockstate-propertyen fantes.
+     */
+    @Override
+    public void onLoad() {
+        super.onLoad();
+        if (level != null && !level.isClientSide) {
+            BlockState state = getBlockState();
+            if (state.hasProperty(UpgradableChestBlock.TIER) && state.getValue(UpgradableChestBlock.TIER) != tier) {
+                level.setBlock(worldPosition, state.setValue(UpgradableChestBlock.TIER, tier), 3);
+            }
+        }
     }
 
     // Synk tier/stack-oppgraderinger til klienten kun ved endring/chunk-last

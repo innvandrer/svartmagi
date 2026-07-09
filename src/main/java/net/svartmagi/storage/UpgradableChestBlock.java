@@ -12,6 +12,8 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.svartmagi.SvartmagiConfig;
 import net.svartmagi.item.UpgradeItem;
@@ -19,10 +21,21 @@ import net.svartmagi.item.UpgradeItem;
 /**
  * Oppgraderbar kiste: stoerrelse oppgraderes med jern/gull/diamant-
  * oppgraderinger, stack-stoerrelse med stabeloppgraderinger.
+ * TIER er en blockstate-property saa hver tier faar sin egen tekstur
+ * (jf. Sophisticated Storage-stilen: samme kropp, ulike hjoernebeslag).
  */
 public class UpgradableChestBlock extends Block implements EntityBlock {
+    public static final EnumProperty<UpgradableChestBlockEntity.Tier> TIER =
+            EnumProperty.create("tier", UpgradableChestBlockEntity.Tier.class);
+
     public UpgradableChestBlock(Properties properties) {
         super(properties);
+        registerDefaultState(stateDefinition.any().setValue(TIER, UpgradableChestBlockEntity.Tier.BASIS));
+    }
+
+    @Override
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+        builder.add(TIER);
     }
 
     @Nullable

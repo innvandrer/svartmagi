@@ -8,6 +8,7 @@ import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.svartmagi.Svartmagi;
 import net.svartmagi.registry.ModBlocks;
+import net.svartmagi.storage.UpgradableChestBlock;
 import net.svartmagi.tech.ItemMoverBlock;
 import net.svartmagi.tech.MachineBlock;
 
@@ -51,8 +52,23 @@ public class ModBlockStateProvider extends BlockStateProvider {
         });
         simpleBlockItem(ModBlocks.UTTREKKER.get(), moverModel);
 
-        simpleBlockWithItem(ModBlocks.OPPGRADERBAR_KISTE.get(),
-                cubeAll(ModBlocks.OPPGRADERBAR_KISTE.get()));
+        // Oppgraderbar kiste: egen tekstur per tier (blockstate-property).
+        ModelFile kisteBasis = models().cubeAll("oppgraderbar_kiste", modLoc("block/oppgraderbar_kiste"));
+        ModelFile kisteJern = models().cubeAll("oppgraderbar_kiste_jern", modLoc("block/oppgraderbar_kiste_jern"));
+        ModelFile kisteGull = models().cubeAll("oppgraderbar_kiste_gull", modLoc("block/oppgraderbar_kiste_gull"));
+        ModelFile kisteDiamant = models().cubeAll("oppgraderbar_kiste_diamant", modLoc("block/oppgraderbar_kiste_diamant"));
+        getVariantBuilder(ModBlocks.OPPGRADERBAR_KISTE.get()).forAllStates(state -> {
+            ModelFile model = switch (state.getValue(UpgradableChestBlock.TIER)) {
+                case BASIS -> kisteBasis;
+                case JERN -> kisteJern;
+                case GULL -> kisteGull;
+                case DIAMANT -> kisteDiamant;
+            };
+            return net.neoforged.neoforge.client.model.generators.ConfiguredModel.builder()
+                    .modelFile(model).build();
+        });
+        simpleBlockItem(ModBlocks.OPPGRADERBAR_KISTE.get(), kisteBasis);
+
         simpleBlockWithItem(ModBlocks.SKYGGEMALM.get(), cubeAll(ModBlocks.SKYGGEMALM.get()));
         simpleBlockWithItem(ModBlocks.SKYGGESTEIN.get(), cubeAll(ModBlocks.SKYGGESTEIN.get()));
         simpleBlockWithItem(ModBlocks.SKYGGEPORTAL.get(), cubeAll(ModBlocks.SKYGGEPORTAL.get()));

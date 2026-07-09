@@ -138,58 +138,73 @@ def cracks(img, color, count=3):
     return img
 
 
-# --- Maskinblokker ----------------------------------------------------------
+# --- Maskinblokker (flat design, inspirert av Iron Furnaces) ----------------
+# Iron Furnaces bruker rene flater: solid tier-farge, en diagonal "sheen"-
+# stripe, og faa geometriske detaljer i stedet for stoy. Vi bruker samme
+# tilnaerming her i stedet for tettpakket per-piksel-stoy.
+
+def flat_fill(base, size=16):
+    return Image.new("RGBA", (size, size), base + (255,))
+
+
+def diagonal_sheen(img, offset=2, width=3, strength=30):
+    """En myk diagonal lysstripe fra nede-venstre til oppe-hoyre."""
+    px = img.load()
+    w, h = img.size
+    for y in range(h):
+        for x in range(w):
+            diff = (x - (h - 1 - y)) - offset
+            if -width <= diff <= width:
+                t = 1 - abs(diff) / (width + 1)
+                r, g, b, a = px[x, y]
+                add = int(strength * t)
+                px[x, y] = (clamp(r + add), clamp(g + add), clamp(b + add), a)
+    return img
+
+
+def brushed_bands(base, band=2):
+    """Horisontale lys/moerk-striper - brushed metal-topp (som Iron Furnaces)."""
+    img = Image.new("RGBA", (16, 16))
+    px = img.load()
+    for y in range(16):
+        tone = light_of(base) if (y // band) % 2 == 0 else dark_of(base)
+        for x in range(16):
+            px[x, y] = tone + (255,)
+    return img
+
 
 def machine_side(accent):
-    img = textured_tile(STEEL)
-    vgrad(img)
+    img = flat_fill(STEEL)
+    diagonal_sheen(img)
     bevel(img, STEEL)
-    rivets(img, STEEL)
     d = ImageDraw.Draw(img)
-    # Ventilspalter
-    for y in (5, 7, 9):
-        d.line([(4, y), (11, y)], fill=shadow_of(STEEL) + (255,))
-        d.line([(4, y + 1), (11, y + 1)], fill=light_of(STEEL) + (255,))
-    # Aksentstripe nederst - identifiserer maskinen
-    d.line([(4, 12), (11, 12)], fill=accent + (255,))
-    d.line([(4, 13), (11, 13)], fill=dark_of(accent) + (255,))
+    # liten statuslampe - identifiserer maskinen fra siden
+    d.rectangle([12, 2, 13, 3], fill=dark_of(accent) + (255,))
+    d.point((12, 2), fill=accent + (255,))
     return img
 
 
 def machine_top(accent):
-    img = textured_tile(dark_of(STEEL))
-    vgrad(img, 8)
+    img = brushed_bands(dark_of(STEEL))
     bevel(img, dark_of(STEEL))
-    rivets(img, STEEL)
     d = ImageDraw.Draw(img)
-    d.rectangle([4, 4, 11, 11], outline=shadow_of(STEEL) + (255,))
-    d.rectangle([5, 5, 10, 10], fill=dark_of(accent) + (255,))
-    d.rectangle([6, 6, 9, 9], fill=accent + (255,))
-    d.line([(6, 6), (7, 6)], fill=light_of(accent) + (255,))
+    d.rectangle([6, 6, 9, 9], fill=dark_of(accent) + (255,))
+    d.rectangle([7, 7, 8, 8], fill=accent + (255,))
     return img
 
 
 def machine_front(accent, on):
-    img = textured_tile(STEEL)
-    vgrad(img)
+    img = flat_fill(STEEL)
+    diagonal_sheen(img)
     bevel(img, STEEL)
-    rivets(img, STEEL)
     d = ImageDraw.Draw(img)
-    # Aapning med skyggekant (innsunket)
-    d.rectangle([3, 3, 12, 12], fill=shadow_of(STEEL) + (255,))
-    d.line([(3, 3), (12, 3)], fill=(18, 16, 26, 255))
-    d.line([(3, 3), (3, 12)], fill=(18, 16, 26, 255))
-    d.rectangle([4, 4, 11, 11], outline=dark_of(accent) + (255,))
+    d.rounded_rectangle([3, 3, 12, 12], radius=2, fill=shadow_of(STEEL) + (255,))
     if on:
-        # Glodende kjerne med radiell lysstyrke
-        d.rectangle([5, 5, 10, 10], fill=accent + (255,))
-        d.rectangle([6, 6, 9, 9], fill=light_of(accent) + (255,))
+        d.rounded_rectangle([4, 4, 11, 11], radius=2, fill=accent + (255,))
+        d.rounded_rectangle([5, 5, 10, 10], radius=1, fill=light_of(accent) + (255,))
         d.rectangle([7, 7, 8, 8], fill=hi_of(accent) + (255,))
-        # Glow som blor ut paa kanten av aapningen
-        for (x, y) in ((4, 7), (4, 8), (11, 7), (11, 8), (7, 4), (8, 4), (7, 11), (8, 11)):
-            d.point((x, y), fill=mix(shadow_of(STEEL), accent, 0.5) + (255,))
     else:
-        d.rectangle([5, 5, 10, 10], fill=(22, 20, 30, 255))
+        d.rounded_rectangle([4, 4, 11, 11], radius=2, fill=(24, 22, 30, 255))
         d.rectangle([7, 7, 8, 8], fill=dark_of(accent) + (255,))
     return img
 
@@ -209,45 +224,40 @@ for name, accent in TECH_MACHINES.items():
     save(machine_front(accent, True), "block", f"{name}_front_on.png")
 
 
+# --- Tier-ovner (flat design, direkte inspirert av Iron Furnaces) -----------
+# Solid materialfarge + diagonal sheen paa sidene, brushed-metal topp, og
+# to runde ventilspalter paa fronten der den nederste fylles med flamme.
+
 def furnace_side(material):
-    img = textured_tile(material, 9)
-    vgrad(img)
+    img = flat_fill(material)
+    diagonal_sheen(img, strength=34)
     bevel(img, material)
-    rivets(img, material)
-    d = ImageDraw.Draw(img)
-    d.rectangle([3, 3, 12, 12], outline=dark_of(material) + (255,))
-    d.line([(4, 4), (11, 4)], fill=light_of(material) + (255,))
     return img
 
 
 def furnace_top(material):
-    img = textured_tile(dark_of(material), 8)
-    vgrad(img, 8)
-    bevel(img, dark_of(material))
-    d = ImageDraw.Draw(img)
-    d.rectangle([4, 4, 11, 11], outline=shadow_of(material) + (255,))
-    d.rectangle([5, 5, 10, 10], fill=dark_of(material) + (255,))
+    img = brushed_bands(material)
+    bevel(img, material)
     return img
 
 
+def draw_flame(d, x0, y0, x1, y1):
+    cx = (x0 + x1) // 2
+    d.polygon([(x0 + 1, y1), (cx, y0), (x1 - 1, y1)], fill=(255, 140, 30, 255))
+    d.polygon([(x0 + 3, y1), (cx, y0 + 3), (x1 - 3, y1)], fill=(255, 214, 96, 255))
+    d.point((cx, y0 + 1), fill=(255, 245, 200, 255))
+
+
 def furnace_front(material, on):
-    img = textured_tile(material, 9)
-    vgrad(img)
+    img = flat_fill(material)
+    diagonal_sheen(img, strength=30)
     bevel(img, material)
-    rivets(img, material)
     d = ImageDraw.Draw(img)
-    # Ovnsmunn - bue av moerk stein
-    d.rectangle([3, 6, 12, 13], fill=(24, 22, 28, 255))
-    d.line([(3, 6), (12, 6)], fill=(14, 13, 18, 255))
-    d.rectangle([3, 3, 12, 5], outline=dark_of(material) + (255,))
+    dark = (20, 18, 24, 255)
+    d.rounded_rectangle([3, 3, 12, 6], radius=1, fill=dark)   # oevre ventilspalte
+    d.rounded_rectangle([3, 9, 12, 13], radius=1, fill=dark)  # nedre ovnsmunn
     if on:
-        flame = (255, 150, 40)
-        d.rectangle([5, 9, 10, 12], fill=flame + (255,))
-        d.rectangle([6, 10, 9, 12], fill=(255, 208, 90, 255))
-        d.point((7, 9), fill=(255, 236, 160, 255))
-        d.point((8, 8), fill=flame + (255,))
-        d.point((5, 8), fill=dark_of(flame) + (255,))
-        d.point((10, 8), fill=dark_of(flame) + (255,))
+        draw_flame(d, 4, 10, 11, 13)
     return img
 
 
@@ -258,15 +268,14 @@ for name, material in FURNACES.items():
     save(furnace_front(material, False), "block", f"{name}_front.png")
     save(furnace_front(material, True), "block", f"{name}_front_on.png")
 
-# Uttrekker
-img = textured_tile(dark_of(STEEL))
-vgrad(img, 8)
+# Uttrekker - samme flate stil som maskinene
+img = flat_fill(dark_of(STEEL))
+diagonal_sheen(img, strength=24)
 bevel(img, dark_of(STEEL))
-rivets(img, dark_of(STEEL))
 save(img, "block", "uttrekker_side.png")
 
-img = textured_tile(dark_of(STEEL))
-vgrad(img, 8)
+img = flat_fill(dark_of(STEEL))
+diagonal_sheen(img, strength=24)
 bevel(img, dark_of(STEEL))
 d = ImageDraw.Draw(img)
 arrow = (236, 208, 96)
@@ -275,24 +284,59 @@ d.polygon([(5, 10), (8, 6), (10, 10)], fill=dark_of(arrow) + (255,))
 d.rectangle([6, 10, 9, 12], fill=arrow + (255,))
 save(img, "block", "uttrekker_front.png")
 
-# Oppgraderbar kiste - treverk med bord, jernband og gullbeslag
-img = textured_tile(WOOD, 6)
-px = img.load()
-for y in range(16):
-    for x in range(16):
-        if x in (5, 11):  # bordskille
-            r, g, b, a = px[x, y]
-            px[x, y] = (clamp(r - 26), clamp(g - 22), clamp(b - 16), a)
-vgrad(img, 10)
-bevel(img, WOOD)
-d = ImageDraw.Draw(img)
-band = dark_of(STEEL)
-d.rectangle([1, 7, 14, 9], fill=band + (255,))
-d.line([(1, 7), (14, 7)], fill=light_of(band) + (255,))
-d.rectangle([6, 6, 9, 10], fill=GOLD + (255,))
-d.rectangle([7, 7, 8, 9], fill=dark_of(GOLD) + (255,))
-d.point((7, 7), fill=hi_of(GOLD) + (255,))
-save(img, "block", "oppgraderbar_kiste.png")
+
+# --- Oppgraderbar kiste (inspirert av Sophisticated Storage) ---------------
+# SS bygger tiered chests som: treverkskropp + metallhoop-baand +
+# tier-fargede hjoernebeslag lagt paa som en overlay. Vi gjenskaper samme
+# lagdelte prinsipp: samme trekropp for alle tiers, med hjoernebeslag som
+# eneste ting som forteller tieren fra hverandre.
+
+def corner_bracket(d, x, y, dx, dy, color, length=5, thickness=2):
+    """Solid L-formet hjoernebeslag - som Sophisticated Storage sin korner-decal.
+    (x, y) er selve hjoernepikselen; dx/dy peker innover mot blokkens senter."""
+    dark = dark_of(color)
+    hx0, hx1 = sorted((x, x + dx * (length - 1)))
+    hy0, hy1 = sorted((y, y + dy * (thickness - 1)))
+    d.rectangle([hx0, hy0, hx1, hy1], fill=color + (255,))
+    vx0, vx1 = sorted((x, x + dx * (thickness - 1)))
+    vy0, vy1 = sorted((y, y + dy * (length - 1)))
+    d.rectangle([vx0, vy0, vx1, vy1], fill=color + (255,))
+    d.point((x, y), fill=light_of(color) + (255,))
+    d.point((x + dx * (length - 1), y), fill=dark + (255,))
+    d.point((x, y + dy * (length - 1)), fill=dark + (255,))
+
+
+def kiste_texture(bracket_color):
+    img = flat_fill(WOOD)
+    px = img.load()
+    # loddrette bordskiller (planke-kropp)
+    for x in (0, 5, 10, 15):
+        for y in range(16):
+            px[x, y] = shadow_of(WOOD) + (255,)
+    d = ImageDraw.Draw(img)
+    # metallhoop-baand oeverst og nederst (som en tonne/kasse)
+    band = dark_of(STEEL)
+    for by in (2, 12):
+        d.rectangle([0, by, 15, by + 1], fill=band + (255,))
+        d.line([(0, by), (15, by)], fill=light_of(band) + (255,))
+    # laasplate i midten
+    d.rectangle([6, 6, 9, 9], fill=dark_of(STEEL) + (255,))
+    d.rectangle([7, 7, 8, 8], fill=STEEL + (255,))
+    d.point((7, 7), fill=light_of(STEEL) + (255,))
+    # hjoernebeslag - eneste tier-indikator, som i Sophisticated Storage
+    if bracket_color is not None:
+        corner_bracket(d, 0, 0, 1, 1, bracket_color)
+        corner_bracket(d, 15, 0, -1, 1, bracket_color)
+        corner_bracket(d, 0, 15, 1, -1, bracket_color)
+        corner_bracket(d, 15, 15, -1, -1, bracket_color)
+    bevel(img, WOOD)
+    return img
+
+
+save(kiste_texture(None), "block", "oppgraderbar_kiste.png")
+save(kiste_texture(IRON), "block", "oppgraderbar_kiste_jern.png")
+save(kiste_texture(GOLD), "block", "oppgraderbar_kiste_gull.png")
+save(kiste_texture(DIAMOND), "block", "oppgraderbar_kiste_diamant.png")
 
 
 # Skyggestein - moerk stein med sprekker og svakt lilla skjaer
