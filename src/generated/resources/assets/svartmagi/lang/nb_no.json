@@ -1,4 +1,5 @@
 {
+  "block.svartmagi.chunklaster": "Chunklaster",
   "block.svartmagi.diamantovn": "Diamantovn",
   "block.svartmagi.elektrisk_ovn": "Elektrisk ovn",
   "block.svartmagi.innhoster": "Innhøster",
@@ -41,6 +42,8 @@
   "command.svartmagi.tpa_sent": "Teleportforespørsel sendt til %s",
   "command.svartmagi.tpahere_received": "%s vil at du skal teleportere til dem. /tpaccept eller /tpdeny",
   "entity.svartmagi.skyggevokter": "Skyggevokteren",
+  "gui.svartmagi.no_upgrades": "Ingen oppgraderinger installert",
+  "gui.svartmagi.upgrades": "Oppgraderinger",
   "item.svartmagi.fartsoppgradering": "Fartsoppgradering",
   "item.svartmagi.gjenkallingsamulett": "Gjenkallingsamulett",
   "item.svartmagi.kisteoppgradering_diamant": "Kisteoppgradering (diamant)",
@@ -78,6 +81,9 @@
   "key.svartmagi.veinmine": "Åregraving (hold)",
   "message.svartmagi.altar_empty": "Legg et senter-item på alteret først",
   "message.svartmagi.chest_wrong_tier": "Installer forrige nivå først",
+  "message.svartmagi.chunk_loader_disabled": "Chunklastere er skrudd av på denne serveren",
+  "message.svartmagi.chunk_loader_disabled_pos": "Chunklaster deaktivert",
+  "message.svartmagi.chunk_loader_enabled": "Chunklaster aktivert",
   "message.svartmagi.magic_disabled": "Magi-pilaren er skrudd av på denne serveren",
   "message.svartmagi.portal_blocked": "Portalen trenger åpen plass to blokker over alteret",
   "message.svartmagi.portal_opened": "En skyggeportal rives opp over alteret!",
@@ -86,6 +92,7 @@
   "message.svartmagi.upgrade_full": "Det er ikke plass til flere slike oppgraderinger",
   "message.svartmagi.upgrade_installed": "Oppgradering installert",
   "message.svartmagi.upgrade_not_supported": "Denne oppgraderingen passer ikke her",
+  "tooltip.svartmagi.chunklaster": "Høyreklikk for å slå av/på. Holder denne chunken lastet.",
   "tooltip.svartmagi.gjenkallingsamulett": "Teleporterer deg hjem (eller til spawn)",
   "tooltip.svartmagi.upgrade_hint": "Høyreklikk en maskin eller kiste for å installere"
 }

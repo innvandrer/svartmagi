@@ -29,6 +29,7 @@ public class ModLanguageProvider extends LanguageProvider {
         both(ModBlocks.INNHOSTER.get().getDescriptionId(), "Harvester", "Innhøster");
         both(ModBlocks.UTTREKKER.get().getDescriptionId(), "Item Mover", "Uttrekker");
         both(ModBlocks.KRAFTKABEL.get().getDescriptionId(), "Power Cable", "Kraftkabel");
+        both(ModBlocks.CHUNKLASTER.get().getDescriptionId(), "Chunk Loader", "Chunklaster");
         both(ModBlocks.KOBBEROVN.get().getDescriptionId(), "Copper Furnace", "Kobberovn");
         both(ModBlocks.JERNOVN.get().getDescriptionId(), "Iron Furnace", "Jernovn");
         both(ModBlocks.DIAMANTOVN.get().getDescriptionId(), "Diamond Furnace", "Diamantovn");
@@ -81,8 +82,12 @@ public class ModLanguageProvider extends LanguageProvider {
         both("message.svartmagi.portal_opened", "A shadow portal tears open above the altar!", "En skyggeportal rives opp over alteret!");
         both("message.svartmagi.portal_blocked", "The portal needs open space two blocks above the altar", "Portalen trenger åpen plass to blokker over alteret");
         both("message.svartmagi.recalled", "You are pulled home through the shadows", "Du trekkes hjem gjennom skyggene");
+        both("message.svartmagi.chunk_loader_enabled", "Chunk loader enabled", "Chunklaster aktivert");
+        both("message.svartmagi.chunk_loader_disabled_pos", "Chunk loader disabled", "Chunklaster deaktivert");
+        both("message.svartmagi.chunk_loader_disabled", "Chunk loaders are disabled on this server", "Chunklastere er skrudd av på denne serveren");
 
         both("tooltip.svartmagi.upgrade_hint", "Right-click a machine or chest to install", "Høyreklikk en maskin eller kiste for å installere");
+        both("tooltip.svartmagi.chunklaster", "Right-click to toggle. Keeps this chunk loaded.", "Høyreklikk for å slå av/på. Holder denne chunken lastet.");
 
         both("gui.svartmagi.upgrades", "Upgrades", "Oppgraderinger");
         both("gui.svartmagi.no_upgrades", "No upgrades installed", "Ingen oppgraderinger installert");

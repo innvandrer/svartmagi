@@ -16,6 +16,7 @@ public final class SvartmagiConfig {
     public static final ModConfigSpec.BooleanValue STORAGE_ENABLED;
     public static final ModConfigSpec.BooleanValue VEINMINE_ENABLED;
     public static final ModConfigSpec.BooleanValue COMMANDS_ENABLED;
+    public static final ModConfigSpec.BooleanValue CHUNK_LOADER_ENABLED;
 
     // Tech
     public static final ModConfigSpec.IntValue GENERATOR_FE_PER_TICK;
@@ -52,6 +53,7 @@ public final class SvartmagiConfig {
         STORAGE_ENABLED = b.comment("Aktiver lagrings-pilaren (oppgraderbare kister)").define("storageEnabled", true);
         VEINMINE_ENABLED = b.comment("Aktiver veinmining (aaregraving)").define("veinmineEnabled", true);
         COMMANDS_ENABLED = b.comment("Aktiver QoL-kommandoer (/tpa, /home, /rtp, ...)").define("commandsEnabled", true);
+        CHUNK_LOADER_ENABLED = b.comment("Aktiver chunklaster-blokken").define("chunkLoaderEnabled", true);
         b.pop();
 
         b.push("tech");

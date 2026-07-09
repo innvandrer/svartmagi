@@ -5,6 +5,7 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.svartmagi.Svartmagi;
+import net.svartmagi.chunkload.ChunkLoaderBlockEntity;
 import net.svartmagi.magic.AltarBlockEntity;
 import net.svartmagi.magic.PedestalBlockEntity;
 import net.svartmagi.storage.UpgradableChestBlockEntity;
@@ -42,6 +43,9 @@ public final class ModBlockEntities {
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<CableBlockEntity>> KRAFTKABEL =
             BLOCK_ENTITIES.register("kraftkabel", () -> BlockEntityType.Builder
                     .of(CableBlockEntity::new, ModBlocks.KRAFTKABEL.get()).build(null));
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ChunkLoaderBlockEntity>> CHUNKLASTER =
+            BLOCK_ENTITIES.register("chunklaster", () -> BlockEntityType.Builder
+                    .of(ChunkLoaderBlockEntity::new, ModBlocks.CHUNKLASTER.get()).build(null));
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<TieredFurnaceBlockEntity>> TIER_OVN =
             BLOCK_ENTITIES.register("tier_ovn", () -> BlockEntityType.Builder
                     .of(TieredFurnaceBlockEntity::new,

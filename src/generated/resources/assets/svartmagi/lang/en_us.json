@@ -1,4 +1,5 @@
 {
+  "block.svartmagi.chunklaster": "Chunk Loader",
   "block.svartmagi.diamantovn": "Diamond Furnace",
   "block.svartmagi.elektrisk_ovn": "Electric Furnace",
   "block.svartmagi.innhoster": "Harvester",
@@ -41,6 +42,8 @@
   "command.svartmagi.tpa_sent": "Teleport request sent to %s",
   "command.svartmagi.tpahere_received": "%s wants you to teleport to them. /tpaccept or /tpdeny",
   "entity.svartmagi.skyggevokter": "Shadow Warden",
+  "gui.svartmagi.no_upgrades": "No upgrades installed",
+  "gui.svartmagi.upgrades": "Upgrades",
   "item.svartmagi.fartsoppgradering": "Speed Upgrade",
   "item.svartmagi.gjenkallingsamulett": "Recall Amulet",
   "item.svartmagi.kisteoppgradering_diamant": "Diamond Chest Upgrade",
@@ -78,6 +81,9 @@
   "key.svartmagi.veinmine": "Vein Mine (hold)",
   "message.svartmagi.altar_empty": "Place a center item on the altar first",
   "message.svartmagi.chest_wrong_tier": "Install the previous tier first",
+  "message.svartmagi.chunk_loader_disabled": "Chunk loaders are disabled on this server",
+  "message.svartmagi.chunk_loader_disabled_pos": "Chunk loader disabled",
+  "message.svartmagi.chunk_loader_enabled": "Chunk loader enabled",
   "message.svartmagi.magic_disabled": "The magic pillar is disabled on this server",
   "message.svartmagi.portal_blocked": "The portal needs open space two blocks above the altar",
   "message.svartmagi.portal_opened": "A shadow portal tears open above the altar!",
@@ -86,6 +92,7 @@
   "message.svartmagi.upgrade_full": "No more upgrades of this type fit",
   "message.svartmagi.upgrade_installed": "Upgrade installed",
   "message.svartmagi.upgrade_not_supported": "This upgrade does not fit here",
+  "tooltip.svartmagi.chunklaster": "Right-click to toggle. Keeps this chunk loaded.",
   "tooltip.svartmagi.gjenkallingsamulett": "Teleports you home (or to spawn)",
   "tooltip.svartmagi.upgrade_hint": "Right-click a machine or chest to install"
 }
