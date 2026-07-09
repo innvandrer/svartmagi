@@ -44,15 +44,20 @@ public class HarvesterBlockEntity extends MachineBlockEntity {
 
     private int cooldown;
     private int cursor;
+    private int cachedRadius = -1;
     @Nullable
     private List<BlockPos> areaCache;
 
+    // Energi/kapasitet splittes i lav/hoy 16-bit halvdel: vanilla-synken
+    // sender ContainerData-verdier som short, saa alt over 32767 kuttes.
     protected final ContainerData data = new ContainerData() {
         @Override
         public int get(int index) {
             return switch (index) {
-                case 0 -> energy.getEnergyStored();
-                case 1 -> energy.getCapacity();
+                case 0 -> energy.getEnergyStored() & 0xFFFF;
+                case 1 -> (energy.getEnergyStored() >> 16) & 0xFFFF;
+                case 2 -> energy.getCapacity() & 0xFFFF;
+                case 3 -> (energy.getCapacity() >> 16) & 0xFFFF;
                 default -> 0;
             };
         }
@@ -62,7 +67,7 @@ public class HarvesterBlockEntity extends MachineBlockEntity {
 
         @Override
         public int getCount() {
-            return 2;
+            return 4;
         }
     };
 
@@ -82,8 +87,11 @@ public class HarvesterBlockEntity extends MachineBlockEntity {
     }
 
     private List<BlockPos> area() {
-        if (areaCache == null) {
-            int radius = SvartmagiConfig.HARVESTER_RADIUS.get();
+        int radius = SvartmagiConfig.HARVESTER_RADIUS.get();
+        // Bygges paa nytt hvis radius endres via config-hot-reload.
+        if (areaCache == null || cachedRadius != radius) {
+            cachedRadius = radius;
+            cursor = 0;
             Direction facing = getBlockState().getValue(MachineBlock.FACING);
             BlockPos center = worldPosition.relative(facing, radius + 1);
             List<BlockPos> positions = new ArrayList<>((2 * radius + 1) * (2 * radius + 1));
@@ -95,12 +103,6 @@ public class HarvesterBlockEntity extends MachineBlockEntity {
             areaCache = positions;
         }
         return areaCache;
-    }
-
-    /** Kalles ved config-endring/rotasjon for aa bygge omraadet paa nytt. */
-    public void invalidateArea() {
-        areaCache = null;
-        cursor = 0;
     }
 
     @Override
@@ -229,9 +231,11 @@ public class HarvesterBlockEntity extends MachineBlockEntity {
 
     /** Dytt hoestet innhold (unntatt saplings) til nabo-inventar. */
     private void pushOutput() {
+        boolean anythingLeft = false;
         for (Direction dir : Direction.values()) {
             IItemHandler neighbor = itemNeighbor(dir);
             if (neighbor == null) continue;
+            anythingLeft = false;
             for (int slot = 0; slot < inventory.getSlots(); slot++) {
                 ItemStack stack = inventory.getStackInSlot(slot);
                 if (stack.isEmpty()) continue;
@@ -241,8 +245,10 @@ public class HarvesterBlockEntity extends MachineBlockEntity {
                 }
                 ItemStack remainder = ItemHandlerHelper.insertItemStacked(neighbor, stack.copy(), false);
                 inventory.setStackInSlot(slot, remainder);
+                if (!remainder.isEmpty()) anythingLeft = true;
             }
-            return; // en nabo er nok
+            // Proev neste nabo kun hvis denne ikke tok alt (f.eks. full kiste).
+            if (!anythingLeft) return;
         }
     }
 

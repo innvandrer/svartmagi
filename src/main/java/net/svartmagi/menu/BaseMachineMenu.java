@@ -1,15 +1,23 @@
 package net.svartmagi.menu;
 
+import javax.annotation.Nullable;
+
+import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.entity.BlockEntity;
 
 /** Felles: spillerinventar-slots + standard shift-klikk. */
 public abstract class BaseMachineMenu extends AbstractContainerMenu {
     protected final int machineSlots;
+
+    /** Settes av server-konstruktoren; null paa klienten er ok. */
+    @Nullable
+    protected BlockEntity blockEntity;
 
     protected BaseMachineMenu(MenuType<?> type, int containerId, int machineSlots) {
         super(type, containerId);
@@ -51,6 +59,8 @@ public abstract class BaseMachineMenu extends AbstractContainerMenu {
 
     @Override
     public boolean stillValid(Player player) {
-        return true;
+        // Lukker menyen naar blokken fjernes eller spilleren gaar for langt
+        // unna, saa items ikke havner i en forlatt handler.
+        return blockEntity == null || Container.stillValidBlockEntity(blockEntity, player);
     }
 }

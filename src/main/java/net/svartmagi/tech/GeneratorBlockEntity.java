@@ -23,14 +23,18 @@ public class GeneratorBlockEntity extends MachineBlockEntity {
     private int burnTime;
     private int burnDuration;
 
+    // Energi/kapasitet splittes i lav/hoy 16-bit halvdel: vanilla-synken
+    // sender ContainerData-verdier som short, saa alt over 32767 kuttes.
     protected final ContainerData data = new ContainerData() {
         @Override
         public int get(int index) {
             return switch (index) {
                 case 0 -> burnTime;
                 case 1 -> burnDuration;
-                case 2 -> energy.getEnergyStored();
-                case 3 -> energy.getCapacity();
+                case 2 -> energy.getEnergyStored() & 0xFFFF;
+                case 3 -> (energy.getEnergyStored() >> 16) & 0xFFFF;
+                case 4 -> energy.getCapacity() & 0xFFFF;
+                case 5 -> (energy.getCapacity() >> 16) & 0xFFFF;
                 default -> 0;
             };
         }
@@ -45,7 +49,7 @@ public class GeneratorBlockEntity extends MachineBlockEntity {
 
         @Override
         public int getCount() {
-            return 4;
+            return 6;
         }
     };
 

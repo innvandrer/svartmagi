@@ -14,12 +14,13 @@ public class GeneratorMenu extends BaseMachineMenu {
     private final ContainerData data;
 
     public GeneratorMenu(int containerId, Inventory playerInventory, FriendlyByteBuf buf) {
-        this(containerId, playerInventory, clientBlockEntity(playerInventory, buf.readBlockPos()), new SimpleContainerData(4));
+        this(containerId, playerInventory, clientBlockEntity(playerInventory, buf.readBlockPos()), new SimpleContainerData(6));
     }
 
     public GeneratorMenu(int containerId, Inventory playerInventory, GeneratorBlockEntity blockEntity, ContainerData data) {
         super(ModMenus.KULLGENERATOR.get(), containerId, 1);
         this.data = data;
+        this.blockEntity = blockEntity;
         ItemStackHandler handler = blockEntity != null ? blockEntity.getInventory() : new ItemStackHandler(1);
         addSlot(new SlotItemHandler(handler, GeneratorBlockEntity.SLOT_FUEL, 80, 40));
         addPlayerInventory(playerInventory, 84);
@@ -39,10 +40,10 @@ public class GeneratorMenu extends BaseMachineMenu {
     }
 
     public int getEnergy() {
-        return data.get(2);
+        return (data.get(3) << 16) | (data.get(2) & 0xFFFF);
     }
 
     public int getCapacity() {
-        return data.get(3);
+        return (data.get(5) << 16) | (data.get(4) & 0xFFFF);
     }
 }

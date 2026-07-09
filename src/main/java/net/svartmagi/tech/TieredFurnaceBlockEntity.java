@@ -100,6 +100,10 @@ public class TieredFurnaceBlockEntity extends MachineBlockEntity {
 
     @Override
     public void serverTick() {
+        if (!net.svartmagi.SvartmagiConfig.TECH_ENABLED.get()) {
+            setLit(false);
+            return;
+        }
         boolean wasBurning = burnTime > 0;
         if (burnTime > 0) burnTime--;
 

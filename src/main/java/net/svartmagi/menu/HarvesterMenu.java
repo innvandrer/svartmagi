@@ -15,12 +15,13 @@ public class HarvesterMenu extends BaseMachineMenu {
     private final ContainerData data;
 
     public HarvesterMenu(int containerId, Inventory playerInventory, FriendlyByteBuf buf) {
-        this(containerId, playerInventory, clientBlockEntity(playerInventory, buf.readBlockPos()), new SimpleContainerData(2));
+        this(containerId, playerInventory, clientBlockEntity(playerInventory, buf.readBlockPos()), new SimpleContainerData(4));
     }
 
     public HarvesterMenu(int containerId, Inventory playerInventory, HarvesterBlockEntity blockEntity, ContainerData data) {
         super(ModMenus.INNHOSTER.get(), containerId, 9);
         this.data = data;
+        this.blockEntity = blockEntity;
         ItemStackHandler handler = blockEntity != null ? blockEntity.getInventory() : new ItemStackHandler(9);
         for (int row = 0; row < 3; row++) {
             for (int col = 0; col < 3; col++) {
@@ -36,10 +37,10 @@ public class HarvesterMenu extends BaseMachineMenu {
     }
 
     public int getEnergy() {
-        return data.get(0);
+        return (data.get(1) << 16) | (data.get(0) & 0xFFFF);
     }
 
     public int getCapacity() {
-        return data.get(1);
+        return (data.get(3) << 16) | (data.get(2) & 0xFFFF);
     }
 }

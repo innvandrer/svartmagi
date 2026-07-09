@@ -98,6 +98,16 @@ public class UpgradableChestBlockEntity extends BlockEntity implements MenuProvi
             return false;
         }
 
+        // Lukk aapne menyer mot den gamle handleren foer byttet, ellers
+        // skriver andre spillere items inn i en forlatt handler (item-tap).
+        if (level instanceof net.minecraft.server.level.ServerLevel serverLevel) {
+            for (net.minecraft.server.level.ServerPlayer viewer : serverLevel.players()) {
+                if (viewer.containerMenu instanceof UpgradableChestMenu menu && menu.isFor(inventory)) {
+                    viewer.closeContainer();
+                }
+            }
+        }
+
         ItemStackHandler bigger = createHandler(target.rows * 9);
         for (int i = 0; i < inventory.getSlots(); i++) {
             bigger.setStackInSlot(i, inventory.getStackInSlot(i));
@@ -168,6 +178,6 @@ public class UpgradableChestBlockEntity extends BlockEntity implements MenuProvi
     @Nullable
     @Override
     public AbstractContainerMenu createMenu(int containerId, Inventory playerInventory, Player player) {
-        return new UpgradableChestMenu(containerId, playerInventory, inventory, tier.rows);
+        return new UpgradableChestMenu(containerId, playerInventory, inventory, tier.rows, this);
     }
 }

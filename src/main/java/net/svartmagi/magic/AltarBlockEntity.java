@@ -94,11 +94,14 @@ public class AltarBlockEntity extends BlockEntity {
 
         switch (recipe.outcome()) {
             case ITEM -> {
-                ItemEntity entity = new ItemEntity(serverLevel,
-                        worldPosition.getX() + 0.5, worldPosition.getY() + 1.2, worldPosition.getZ() + 0.5,
-                        recipe.result().copy());
-                entity.setDefaultPickUpDelay();
-                serverLevel.addFreshEntity(entity);
+                // Datapacks kan utelate result; ikke spawn en tom ItemEntity.
+                if (!recipe.result().isEmpty()) {
+                    ItemEntity entity = new ItemEntity(serverLevel,
+                            worldPosition.getX() + 0.5, worldPosition.getY() + 1.2, worldPosition.getZ() + 0.5,
+                            recipe.result().copy());
+                    entity.setDefaultPickUpDelay();
+                    serverLevel.addFreshEntity(entity);
+                }
             }
             case PORTAL -> {
                 BlockPos portalPos = worldPosition.above(2);

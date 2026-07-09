@@ -38,7 +38,8 @@ public final class ModCommands {
 
     public static void onPlayerLeave(UUID player) {
         TpaManager.clear(player);
-        RTP_COOLDOWNS.remove(player);
+        // RTP_COOLDOWNS beholdes bevisst: aa fjerne den her lot spillere
+        // omgaa cooldownen ved aa relogge.
     }
 
     /**

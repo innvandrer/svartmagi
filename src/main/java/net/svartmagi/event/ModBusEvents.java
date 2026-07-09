@@ -48,17 +48,18 @@ public final class ModBusEvents {
         event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModBlockEntities.UTTREKKER.get(),
                 (be, side) -> be.getBuffer());
 
-        // Energi
+        // Energi: generatoren gir kun ut, maskiner tar kun imot - hindrer at
+        // generatorer lades utenfra/ping-ponger, og at maskiner toemmes.
         event.registerBlockEntity(Capabilities.EnergyStorage.BLOCK, ModBlockEntities.KULLGENERATOR.get(),
-                (be, side) -> be.getEnergy());
+                (be, side) -> be.getEnergy().extractOnlyView());
         event.registerBlockEntity(Capabilities.EnergyStorage.BLOCK, ModBlockEntities.ELEKTRISK_OVN.get(),
-                (be, side) -> be.getEnergy());
+                (be, side) -> be.getEnergy().receiveOnlyView());
         event.registerBlockEntity(Capabilities.EnergyStorage.BLOCK, ModBlockEntities.KNUSER.get(),
-                (be, side) -> be.getEnergy());
+                (be, side) -> be.getEnergy().receiveOnlyView());
         event.registerBlockEntity(Capabilities.EnergyStorage.BLOCK, ModBlockEntities.SKYGGEINFUSER.get(),
-                (be, side) -> be.getEnergy());
+                (be, side) -> be.getEnergy().receiveOnlyView());
         event.registerBlockEntity(Capabilities.EnergyStorage.BLOCK, ModBlockEntities.INNHOSTER.get(),
-                (be, side) -> be.getEnergy());
+                (be, side) -> be.getEnergy().receiveOnlyView());
     }
 
     @SubscribeEvent

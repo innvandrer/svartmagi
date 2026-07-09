@@ -35,14 +35,18 @@ public abstract class ProcessingBlockEntity extends MachineBlockEntity {
 
     protected record CachedRecipe(ItemStack result, int processingTime, int maxParallel) {}
 
+    // Energi/kapasitet splittes i lav/hoy 16-bit halvdel: vanilla-synken
+    // sender ContainerData-verdier som short, saa alt over 32767 kuttes.
     protected final ContainerData data = new ContainerData() {
         @Override
         public int get(int index) {
             return switch (index) {
                 case 0 -> progress;
                 case 1 -> totalTime;
-                case 2 -> energy.getEnergyStored();
-                case 3 -> energy.getCapacity();
+                case 2 -> energy.getEnergyStored() & 0xFFFF;
+                case 3 -> (energy.getEnergyStored() >> 16) & 0xFFFF;
+                case 4 -> energy.getCapacity() & 0xFFFF;
+                case 5 -> (energy.getCapacity() >> 16) & 0xFFFF;
                 default -> 0;
             };
         }
@@ -57,7 +61,7 @@ public abstract class ProcessingBlockEntity extends MachineBlockEntity {
 
         @Override
         public int getCount() {
-            return 4;
+            return 6;
         }
     };
 
@@ -146,6 +150,9 @@ public abstract class ProcessingBlockEntity extends MachineBlockEntity {
         if (operations <= 0) return;
 
         input.shrink(operations);
+        // shrink() gaar utenom onContentsChanged, saa cachen maa markeres
+        // manuelt - ellers fortsetter maskinen aa trekke FE med tom input.
+        recipeDirty = true;
         if (out.isEmpty()) {
             ItemStack produced = recipe.result().copy();
             produced.setCount(recipe.result().getCount() * operations);

@@ -1,6 +1,7 @@
 package net.svartmagi.tech;
 
 import net.neoforged.neoforge.energy.EnergyStorage;
+import net.neoforged.neoforge.energy.IEnergyStorage;
 
 /** FE-buffer som markerer blockentityen som endret ved endringer. */
 public class EnergyBuffer extends EnergyStorage {
@@ -45,5 +46,82 @@ public class EnergyBuffer extends EnergyStorage {
 
     public int getCapacity() {
         return capacity;
+    }
+
+    /**
+     * Visning som kun tillater uttrekk. Brukes som generatorens exposed
+     * capability, saa generatorer ikke kan lades utenfra eller dytte
+     * energi frem og tilbake mellom hverandre.
+     */
+    public IEnergyStorage extractOnlyView() {
+        return new IEnergyStorage() {
+            @Override
+            public int receiveEnergy(int toReceive, boolean simulate) {
+                return 0;
+            }
+
+            @Override
+            public int extractEnergy(int toExtract, boolean simulate) {
+                return EnergyBuffer.this.extractEnergy(toExtract, simulate);
+            }
+
+            @Override
+            public int getEnergyStored() {
+                return EnergyBuffer.this.getEnergyStored();
+            }
+
+            @Override
+            public int getMaxEnergyStored() {
+                return EnergyBuffer.this.getMaxEnergyStored();
+            }
+
+            @Override
+            public boolean canExtract() {
+                return true;
+            }
+
+            @Override
+            public boolean canReceive() {
+                return false;
+            }
+        };
+    }
+
+    /**
+     * Visning som kun tillater innmating. Brukes som maskinenes exposed
+     * capability: maskiner mottar strom, men kan ikke toemmes utenfra.
+     */
+    public IEnergyStorage receiveOnlyView() {
+        return new IEnergyStorage() {
+            @Override
+            public int receiveEnergy(int toReceive, boolean simulate) {
+                return EnergyBuffer.this.receiveEnergy(toReceive, simulate);
+            }
+
+            @Override
+            public int extractEnergy(int toExtract, boolean simulate) {
+                return 0;
+            }
+
+            @Override
+            public int getEnergyStored() {
+                return EnergyBuffer.this.getEnergyStored();
+            }
+
+            @Override
+            public int getMaxEnergyStored() {
+                return EnergyBuffer.this.getMaxEnergyStored();
+            }
+
+            @Override
+            public boolean canExtract() {
+                return false;
+            }
+
+            @Override
+            public boolean canReceive() {
+                return true;
+            }
+        };
     }
 }

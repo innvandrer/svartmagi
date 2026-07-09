@@ -21,6 +21,7 @@ public class TieredFurnaceMenu extends BaseMachineMenu {
     public TieredFurnaceMenu(int containerId, Inventory playerInventory, TieredFurnaceBlockEntity blockEntity, ContainerData data) {
         super(ModMenus.TIER_OVN.get(), containerId, 3);
         this.data = data;
+        this.blockEntity = blockEntity;
         ItemStackHandler handler = blockEntity != null ? blockEntity.getInventory() : new ItemStackHandler(3);
         addSlot(new SlotItemHandler(handler, TieredFurnaceBlockEntity.SLOT_INPUT, 56, 17));
         addSlot(new SlotItemHandler(handler, TieredFurnaceBlockEntity.SLOT_FUEL, 56, 53));

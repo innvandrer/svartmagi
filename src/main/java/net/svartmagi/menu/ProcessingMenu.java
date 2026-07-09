@@ -15,12 +15,13 @@ public class ProcessingMenu extends BaseMachineMenu {
     private final ContainerData data;
 
     public ProcessingMenu(int containerId, Inventory playerInventory, FriendlyByteBuf buf) {
-        this(containerId, playerInventory, clientBlockEntity(playerInventory, buf.readBlockPos()), new SimpleContainerData(4));
+        this(containerId, playerInventory, clientBlockEntity(playerInventory, buf.readBlockPos()), new SimpleContainerData(6));
     }
 
     public ProcessingMenu(int containerId, Inventory playerInventory, ProcessingBlockEntity blockEntity, ContainerData data) {
         super(ModMenus.PROSESSERING.get(), containerId, 2);
         this.data = data;
+        this.blockEntity = blockEntity;
         ItemStackHandler handler = blockEntity != null ? blockEntity.getInventory() : new ItemStackHandler(2);
         addSlot(new SlotItemHandler(handler, ProcessingBlockEntity.SLOT_INPUT, 56, 35));
         addSlot(new SlotItemHandler(handler, ProcessingBlockEntity.SLOT_OUTPUT, 116, 35) {
@@ -46,10 +47,10 @@ public class ProcessingMenu extends BaseMachineMenu {
     }
 
     public int getEnergy() {
-        return data.get(2);
+        return (data.get(3) << 16) | (data.get(2) & 0xFFFF);
     }
 
     public int getCapacity() {
-        return data.get(3);
+        return (data.get(5) << 16) | (data.get(4) & 0xFFFF);
     }
 }
